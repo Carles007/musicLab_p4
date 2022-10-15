@@ -1,0 +1,17 @@
+<div *ngIf="song" class="card" style="background-color:  #1f0255fd;">
+  <div class="row">
+    <div class="text-center">
+      <img class="rounded mx-auto d-block img-thumbnail" src="{{song.imagen}}" >
+    </div>
+    <div>
+      <h4 style="color:rgb(30, 231, 3);"><font face="Comic Sans MS,Arial,Verdana">Song Details</font></h4>
+      <div>
+          <h6 style="color:rgb(30, 231, 3);"><font face="Comic Sans MS,Arial,Verdana">Name: {{song.name}}</font></h6>
+          <h6 style="color:rgb(30, 231, 3);"><font face="Comic Sans MS,Arial,Verdana">Artist: {{song.artist}}</font></h6>
+          <h6 style="color:rgb(30, 231, 3);"><font face="Comic Sans MS,Arial,Verdana">Album: {{song.album}}</font></h6>
+          <h6 style="color:rgb(30, 231, 3);"><font face="Comic Sans MS,Arial,Verdana">Year: {{song.year}}</font></h6>
+          <h6 style="color:rgb(30, 231, 3);"><font face="Comic Sans MS,Arial,Verdana">Duration: {{song.time}}</font></h6>
+      </div>
+  </div>
+  </div>
+</div>

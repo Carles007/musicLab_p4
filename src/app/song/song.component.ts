@@ -13,14 +13,6 @@ export class SongComponent implements OnInit {
   songs = SONGS;
   selectedSong?: Song;
 
-  song: Song ={
-    id:1,
-    name: 'Master of Puppets',
-    artist: 'Metallica',
-    album: 'Master of Puppets',
-    year: 1986
-  }
-
   constructor() { }
 
   ngOnInit(): void {
