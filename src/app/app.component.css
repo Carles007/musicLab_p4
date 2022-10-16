@@ -1,3 +1,5 @@
+
+
 .vertical-nav {
     min-width: 17rem;
     width: 17rem;
@@ -5,25 +7,30 @@
     position: fixed;
     top: 0;
     left: 0;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 20px 20px 20px rgba(0, 26, 255, 0.1);
     transition: all 0.4s;
+     background-color:#dbf0fe;
   }
   
   .page-content {
     width: calc(100% - 17rem);
     margin-left: 17rem;
     transition: all 0.4s;
+    
+    background-color:#dbf0fe;
   }
   
   /* for toggle behavior */
   
   #sidebar.active {
     margin-left: -17rem;
+    background-color:#dbf0fe;
   }
   
   #content.active {
     width: 100%;
     margin: 0;
+    background-color:#dbf0fe;
   }
   
   @media (max-width: 768px) {

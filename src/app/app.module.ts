@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { SongComponent } from './song/song.component';
 import { SongDetailComponent } from './song-detail/song-detail.component';
 import { ListaCancionesComponent } from './lista-canciones/lista-canciones.component';
+import { MusicControlComponent } from './music-control/music-control.component';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { ListaCancionesComponent } from './lista-canciones/lista-canciones.compo
     AppComponent,
     SongComponent,
     SongDetailComponent,
-    ListaCancionesComponent
+    ListaCancionesComponent,
+    MusicControlComponent
   ],
   imports: [
     BrowserModule,
