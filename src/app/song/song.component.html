@@ -10,7 +10,7 @@
 
       <div *ngFor="let song of songs">
         <div class="d-grid gap-2">
-          <button [class.selected]="song === selectedSong"  type="button" class="btn btn-primary list-group-item-info list-group-item-action" (click)="onSelect(song)">
+          <button [class.selected]="song === selectedSong" style="background-color: #1f0255fd;" type="button" class="list-group-item-dark list-group-item-action" (click)="onSelect(song)">
             <div class="d-flex w-100 justify-content-between">
             <h6 class="mb-1" style="color:rgb(30, 231, 3);"><font face="Comic Sans MS,Arial,Verdana">{{song.name}}</font></h6>
             <small style="color:rgb(30, 231, 3);"><font face="Comic Sans MS,Arial,Verdana">{{song.time}}</font></small>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Song } from '../song';
-import { SONGS } from '../mock-songs';
+import { Songs } from '../mock-songs';
 
 @Component({
   selector: 'app-lista-canciones',
@@ -9,15 +9,20 @@ import { SONGS } from '../mock-songs';
 })
 export class ListaCancionesComponent implements OnInit {
 
-  
 
-
-  songList: Song[] = SONGS;
+  songObj = new Songs();
+  //songs = this.songlist.SONGS
   selectedSong?: Song;
+
+
+  songList: Song[] = this.songObj.SONGS;
+
+
+
   sortBy: string = "name";
 
   constructor() { }
- 
+
 
   ngOnInit(): void {
 
@@ -36,3 +41,4 @@ export class ListaCancionesComponent implements OnInit {
   }
 
 }
+

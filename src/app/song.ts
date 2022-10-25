@@ -1,12 +1,14 @@
 import { Time } from "@angular/common";
 
-export interface Song {
-  id: number;
-  name: string;
-  artist: string;
-  album: string;
-  year: number;
-  time: string;
-  imagen: string;
-  url: string;
+export class Song {
+
+  constructor(
+    public id: number,
+    public name: string,
+    public artist: string,
+    public album: string,
+    public year: number,
+    public time: string,
+    public imagen: string,
+  ){}
 }

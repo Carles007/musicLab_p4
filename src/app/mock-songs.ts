@@ -1,15 +1,18 @@
 import { Song } from "./song";
 
-export const SONGS: Song[] = [
 
-  { id: 14, name: 'Seek & Destroy', artist:'Metallica', album: 'Kill \'Em All', year: 1983, time: '6:54', imagen:'assets/img/metallica.png', url: 'assets/mp3/Seek & Destroy.mp3'},
-  { id: 1, name: 'The Trooper', artist:'Iron Maiden', album: 'Piece of Mind', year: 1983, time: '4:16', imagen:'assets/img/ironmaiden.png', url: 'assets/mp3/The Trooper.mp3'},
-  { id: 2, name: 'The Fat Man', artist:'Fats Domino', album: 'Fats Domino Swings', year: 1959, time: '2:36', imagen:'assets/img/fatsdomino.jpg', url: 'assets/mp3/The Fat Man.mp3'},
-  { id: 3, name: 'Breathe', artist:'Pink Floyd', album: 'Dark Side of the Moon', year: 1973, time: '4:02', imagen:'assets/img/pink-floyd.jpg', url: 'assets/mp3/Breathe.mp3'},
-  { id: 4, name: 'Show Must Go On', artist:'Queen', album: 'Innuendo', year: 1991, time: '4:22', imagen:'assets/img/Queen.jpg', url: 'assets/mp3/The Fat Man.mp3'},
-  { id: 5, name: 'Black Dog', artist:'Led Zeppelin', album: 'Led Zeppelin', year: 1971, time: '4:55', imagen:'assets/img/ledzeppelin.jpeg', url: 'assets/mp3/Black Dog.mp3'},
-  { id: 6, name: 'Purple Haze', artist:'Jimi Hendrix', album: 'Are You Experienced', year: 1967, time: '2:52', imagen:'assets/img/hendrix.jpg', url: 'assets/mp3/Purple Hazen.mp3'},
-  { id: 7, name: 'You Dont Know Me', artist:'Ray Charles', album: 'Modern Sounds in Country and Western Music', year: 2009, time: '3:14', imagen:'assets/img/ray.jpg', url: 'assets/mp3/You Dont Know Me.mp3'},
-  { id: 8, name: 'Kiss', artist:'Prince', album: 'Parade', year: 1986, time: '3:55', imagen:'assets/img/prince.png', url: 'assets/mp3/Kiss.mp3'}
+export class Songs{
 
-]
+
+ SONGS = [
+          new Song( 8,'Kiss', 'Prince',  'Parade',  1986,  '346', 'assets/img/prince.png'),
+          new Song( 1, 'The Trooper', 'Iron Maiden', 'Piece of Mind',1983,  '412', 'assets/img/ironmaiden.png'),
+          new Song( 2,'The Fat Man', 'Fats Domino',  'Fats Domino Swings',  1959,  '243', 'assets/img/fatsdomino.jpg'),
+          new Song( 3,'Breathe', 'Pink Floyd',  'Dark Side of the Moon',  1973,  '249', 'assets/img/pink-floyd.jpg'),
+          new Song( 4,'Show Must Go On', 'Queen',  'Innuendo',  1991,  '437', 'assets/img/Queen.jpg'),
+          new Song( 5,'Black Dog', 'Led Zeppelin',  'Led Zeppelin',  1971,  '455', 'assets/img/ledzeppelin.jpeg'),
+          new Song( 6,'Purple Haze', 'Jimi Hendrix',  'Are You Experienced',  1967,  '250', 'assets/img/hendrix.jpg'),
+          new Song( 7,'You Dont Know Me', 'Ray Charles',  'Modern Sounds in Country and Western Music',  2009,  '316', 'assets/img/ray.jpg'),
+          new Song( 9,  'Seek & Destroy', 'Metallica', 'Kill \'Em All', 1983,  '6:54', 'assets/img/metallica.png')
+        ]
+}
