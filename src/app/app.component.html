@@ -64,7 +64,7 @@
 <!-- Page content holder -->
 <div class="page-content p-5" id="content">
  <!-- <app-song></app-song>-->
-<app-lista-canciones></app-lista-canciones>
-<app-music-control></app-music-control>
+<app-lista-canciones (songEvent)="receiveSong($event)"></app-lista-canciones>
+<app-music-control [song]="song"></app-music-control>
 
 </div>
