@@ -9,4 +9,5 @@ export interface Song {
 
   time: string;
   imagen: string;
+  url: string;
 }
