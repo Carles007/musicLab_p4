@@ -7,9 +7,13 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class MusicControlComponent implements OnInit {
 
-  audio = new Audio();
+  audio: HTMLAudioElement = new Audio();
+  playing: boolean = false;
+ // volume: number=0.5;
 
   constructor() { }
+  progress = 0;
+
 
   ngOnInit(): void {
   }
@@ -17,30 +21,61 @@ export class MusicControlComponent implements OnInit {
   @Input() set song(src: string) {
     this.audio.src = src;
     this.audio.load();
+    this.audio.volume = 0.5;
   }
-  
+
   playSound() {
 
     this.audio.play();
+    this.updateProgress();
+    this.playing = true;
+
   }
+
   pauseSound() {
 
     this.audio.pause();
+    this.playing = false;
+
   }
   stopSound() {
 
     this.audio.pause();
     this.audio.currentTime = 0;
+    this.playing = false;
+
+  }
+  previousSound() {
+    this.audio.play();
+    this.audio.load();
+
+    //this.audio.previous();
+    this.audio.currentTime = 0;
+  }
+  nextSound() {
+
+    //this.audio.next();
+    this.audio.currentTime = 0;
   }
 
-  secondsToString (seconds: number): string {
+  updateProgress() {
+
+    this.progress = (this.audio.currentTime / this.audio.duration * 100 || 0)
+    setTimeout(() => {
+      this.updateProgress();
+    }, 1000)
+
+
+    console.log("Progreso:" + this.progress);
+  }
+  secondsToString(seconds: number): string {
     if (isNaN(seconds)) seconds = 0;
 
-    let hour: string|number = Math.floor(seconds / 3600);
+    let hour: string | number = Math.floor(seconds / 3600);
     hour = (hour < 10) ? '0' + hour : hour;
-    let minute: string|number = Math.floor((seconds / 60) % 60);
+    let minute: string | number = Math.floor((seconds / 60) % 60);
     minute = (minute < 10) ? '0' + minute : minute;
-    let second: string|number = Math.floor(seconds % 60);
+    let second: string | number = Math.floor(seconds % 60);
     second = (second < 10) ? '0' + second : second;
 
     return `${hour}:${minute}:${second}`;
