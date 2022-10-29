@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Song } from '../song';
 import { SONGS } from '../mock-songs';
+import { FilterPipe } from '../pipes/filter.pipe';
 
 @Component({
   selector: 'app-lista-canciones',
@@ -12,11 +13,15 @@ export class ListaCancionesComponent implements OnInit {
   songList: Song[] = SONGS;
   selectedSong?: Song;
   sortBy: string = "name";
+  filterSong = '';
+  filterSong1 = '';
+  filterSong2 = '';
+
 
   @Output() songEvent = new EventEmitter<Song>();
 
   constructor() { }
- 
+
   ngOnInit(): void { }
 
   get songs() {

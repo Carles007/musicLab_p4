@@ -64,13 +64,13 @@
 
 <!-- Page content holder -->
 <div class="page-content p-5" id="content">
-  
 
-  <div class="text-center"><img src="../assets/img/MusicLab.jpg" class="rounded">
-       
-    
-      </div>
-    
+
+   <div class="text-center"><img src="../assets/img/MusicLab.jpg" class="rounded"></div>
+
+
+
+
   <!-- <app-song></app-song>-->
   <app-lista-canciones id="songList" (songEvent)="receiveSong($event)"></app-lista-canciones>
   <app-music-control id="controls" [song]="song"></app-music-control>

@@ -11,38 +11,29 @@
     transition: all 0.4s;
      background-color:#dbf0fe;
   }
-  
+
   .page-content {
     width: calc(100% - 17rem);
     margin-left: 17rem;
     transition: all 0.4s;
-    
+
     background-color:#f8f8f8;
   }
-  
+
   /* for toggle behavior */
-  
+
   #sidebar.active {
     margin-left: -17rem;
     background-color:#dbf0fe;
   }
-  
+
   #content.active {
     width: 100%;
     margin: 0;
     background-color:#dbf0fe;
   }
 
-  #songList {
-    width: 50%;
-    float: left;
-  }
 
-  #controls {
-    width: 50%;
-    float: left;
-  }
-  
   @media (max-width: 768px) {
     #sidebar {
       margin-left: -17rem;

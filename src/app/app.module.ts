@@ -7,6 +7,10 @@ import { SongDetailComponent } from './song-detail/song-detail.component';
 import { ListaCancionesComponent } from './lista-canciones/lista-canciones.component';
 import { MusicControlComponent } from './music-control/music-control.component';
 import { ProgressbarComponent } from './progressbar/progressbar.component';
+import { FilterPipe } from './pipes/filter.pipe';
+import { Filter1Pipe } from './pipes/filter1.pipe';
+import { Filter2Pipe } from './pipes/filter2.pipe';
+
 
 
 @NgModule({
@@ -16,7 +20,10 @@ import { ProgressbarComponent } from './progressbar/progressbar.component';
     SongDetailComponent,
     ListaCancionesComponent,
     MusicControlComponent,
-    ProgressbarComponent
+    ProgressbarComponent,
+    FilterPipe,
+    Filter1Pipe,
+    Filter2Pipe
   ],
   imports: [
     BrowserModule,

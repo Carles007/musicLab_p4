@@ -1,5 +1,27 @@
     <div class="row">
+      <div class="row"  id="ordenacion">
+        <label for="filtro1">Filter by song name: </label>
+        <div id="filtro1" class="form-group col-sm-12" style="float:none;margin:auto;">
+          <input type="text" class="form-control" name="filterSong" placeholder="Filter by song name..." [(ngModel)]="filterSong">
+
+        </div>
+      </div>
+      <div class="row"  id="ordenacion">
+        <label for="filtro2">Filter by artist: </label>
+        <div id="filtro1" class="form-group col-sm-12" style="float:none;margin:auto;">
+          <input type="text" class="form-control" name="filterSong1" placeholder="Filter by artist..." [(ngModel)]="filterSong1">
+
+        </div>
+      </div>
+      <div class="row"  id="ordenacion">
+        <label for="filtro3">Filter by album: </label>
+        <div id="filtro3" class="form-group col-sm-12" style="float:none;margin:auto;">
+          <input type="text" class="form-control" name="filterSong1" placeholder="Filter by album..." [(ngModel)]="filterSong2">
+
+        </div>
+      </div>
       <div class="col-sm-12" id="ordenacion">
+
         <label for="orden">Sort by: </label>
         <select id="orden" [(ngModel)]="sortBy">
           <option value="name">Name</option>
@@ -8,23 +30,22 @@
           <option value="year">Year</option>
 
         </select>
-        
-    </div>
-    
-    
-    
-    
 
-    <div class="row" >
-        <div class="col-sm-12" style="float:none;margin:auto;">
-            <app-song-detail [song]="selectedSong"></app-song-detail>
-    
-        </div>
+
+
+
     </div>
-    
-    
+
+    <div class="col-sm-12" style="float:none;margin:auto;">
+        <app-song-detail [song]="selectedSong"></app-song-detail>
+
+    </div>
+    </div>
+
+
+
     <div class="row">
-            <div *ngFor="let song of songs">
+            <div *ngFor="let song of songs | filter:filterSong | filter1:filterSong1 | filter2:filterSong2" >
               <div class="d-grid gap-2">
                 <button [class.selected]="song === selectedSong" type="button" class="list-group-item-dark list-group-item-action" (click)="onSelect(song)">
                   <div class="d-flex w-100 justify-content-between">
@@ -37,8 +58,8 @@
                 </button>
               </div>
             </div>
-      
+
         </div>
-     
+
 
 
