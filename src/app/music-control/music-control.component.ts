@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+
 
 @Component({
   selector: 'app-music-control',
@@ -66,7 +68,8 @@ export class MusicControlComponent implements OnInit {
     }, 1000)
 
 
-    console.log("Progreso:" + this.progress);
+    //console.log("Progreso:" + this.progress);
+    console.log("Progreso:" + this.audio.currentTime);
   }
   secondsToString(seconds: number): string {
     if (isNaN(seconds)) seconds = 0;
