@@ -31,6 +31,7 @@ export class MusicControlComponent implements OnInit {
     this.audio.play();
     this.updateProgress();
     this.playing = true;
+    
 
   }
 

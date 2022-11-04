@@ -7,6 +7,7 @@ export class Filter2Pipe implements PipeTransform {
 
   transform(value: any, arg: any): any {
     const resultSongs = [];
+    
     for(const song of value){
         if(song.album.indexOf(arg) > -1){
           resultSongs.push(song);
@@ -15,3 +16,5 @@ export class Filter2Pipe implements PipeTransform {
     return resultSongs;
   }
 }
+
+

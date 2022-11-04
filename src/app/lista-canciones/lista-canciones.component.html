@@ -40,8 +40,14 @@
 
 
     <div class="row width: 20px; height: 2px; line-height: 3em; overflow:scroll; border: thin #000 solid; padding: 5px;">
-            <cdk-virtual-scroll-viewport itemSize="10" style="height: 250px">
-            <div *ngFor="let song of songs | filter:filterSong | filter1:filterSong1 | filter2:filterSong2" >
+
+            <cdk-virtual-scroll-viewport itemSize="10" style="height: 250px">       
+          
+            <div *ngFor="let song of songList |
+                 filter:filterSong | 
+                 filter1:filterSong1 | 
+                 filter2:filterSong2 |
+                 selector:sortBy" >
               <div class="d-grid gap-2">
                 <button [class.selected]="song === selectedSong" type="button" class="list-group-item-dark list-group-item-action" (click)="onSelect(song)">
                   <div class="d-flex w-100 justify-content-between ">
@@ -54,8 +60,8 @@
                 </button>                              
               </div>              
             </div>
+                           
           </cdk-virtual-scroll-viewport>
         </div>
-
-
+        
 
