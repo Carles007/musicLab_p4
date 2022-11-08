@@ -1,7 +1,8 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Song } from '../song';
 import { SONGS } from '../mock-songs';
 import { FilterPipe } from '../pipes/filter.pipe';
+
 
 @Component({
   selector: 'app-lista-canciones',
@@ -17,10 +18,14 @@ export class ListaCancionesComponent implements OnInit {
   filterSong1 = '';
   filterSong2 = '';
 
+ 
+
 
   @Output() songEvent = new EventEmitter<Song>();
-
+ 
   constructor() { }
+
+  
 
   ngOnInit(): void { }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output , EventEmitter } from '@angular/core';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
@@ -25,6 +25,8 @@ export class MusicControlComponent implements OnInit {
     this.audio.load();
     this.audio.volume = 0.5;
   }
+
+
 
   playSound() {
 
@@ -57,8 +59,7 @@ export class MusicControlComponent implements OnInit {
   }
   nextSound() {
 
-    //this.audio.next();
-    this.audio.currentTime = 0;
+    //this.audio.currentTime = 0;
   }
 
   updateProgress() {
