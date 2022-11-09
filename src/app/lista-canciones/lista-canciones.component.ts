@@ -24,6 +24,7 @@ export class ListaCancionesComponent implements OnInit {
 
   @Output() songEvent = new EventEmitter<Song>();
  
+ 
   constructor() { }
 
   
@@ -53,6 +54,7 @@ export class ListaCancionesComponent implements OnInit {
         nextSong = this.songList[index+1]
       }
     }
+    this.songEvent.emit(nextSong);
     this.onSelect(nextSong);
     return nextSong;
 
