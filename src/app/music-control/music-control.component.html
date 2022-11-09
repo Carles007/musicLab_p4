@@ -33,7 +33,7 @@
 </div>
 <div class="row">
   
-      <progress [value]="audio.currentTime" [max]="audio.duration"></progress>        
+      <input type="range" min="0" [max]="audio.duration" [(ngModel)]="audio.currentTime">
   
 </div>
 </div>
