@@ -18,6 +18,7 @@ export class ListaCancionesComponent implements OnInit {
   filterSong1 = '';
   filterSong2 = '';
 
+
  
 
 
@@ -39,6 +40,23 @@ export class ListaCancionesComponent implements OnInit {
   onSelect(song: Song): void {    
     this.selectedSong = song;
     this.songEvent.emit(this.selectedSong);
+
   }
 
+  nextSong(currentSong: Song): Song {   
+    let nextSong = this.songList[0];
+    
+    for(let i of this.songList){
+      if(i == currentSong){
+        let index = this.songList.indexOf(i);
+        console.log('NextSong');
+        nextSong = this.songList[index+1]
+      }
+    }
+    this.onSelect(nextSong);
+    return nextSong;
+
+    
+    
+  }
 }
