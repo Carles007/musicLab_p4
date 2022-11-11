@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Song } from '../song';
-import { SONGS } from '../mock-songs';
+import { Songs } from '../mock-songs';
 
 
 @Component({
@@ -10,7 +10,8 @@ import { SONGS } from '../mock-songs';
 })
 export class SongComponent implements OnInit {
 
-  songs = SONGS;
+  songlist = new Songs();
+  songs = this.songlist.SONGS
   selectedSong?: Song;
 
   constructor() { }
