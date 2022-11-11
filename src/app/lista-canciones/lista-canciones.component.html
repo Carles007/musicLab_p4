@@ -21,20 +21,15 @@
         </div>
       </div>
       <div class="col-sm-12" id="ordenacion">
-
+        
         <label for="orden">Sort by: </label>
         <select id="orden" [(ngModel)]="sortBy">
           <option value="name">Name</option>
           <option value="artist">Artist</option>
           <option value="album">Album</option>
           <option value="year">Year</option>
-
         </select>
-
-
-
-
-    </div>
+      </div>
 
     <div class="col-sm-12" style="float:none;margin:auto;">
         <app-song-detail [song]="selectedSong"></app-song-detail>
@@ -44,22 +39,29 @@
 
 
 
-    <div class="row">
-            <div *ngFor="let song of songs | filter:filterSong | filter1:filterSong1 | filter2:filterSong2" >
+    <div class="row width: 20px; height: 2px; line-height: 3em; overflow:scroll; border: thin #000 solid; padding: 5px;">
+
+            <cdk-virtual-scroll-viewport itemSize="10" style="height: 250px">       
+          
+            <div *ngFor="let song of songList |
+                 filter:filterSong | 
+                 filter1:filterSong1 | 
+                 filter2:filterSong2 |
+                 selector:sortBy" >
               <div class="d-grid gap-2">
                 <button [class.selected]="song === selectedSong" type="button" class="list-group-item-dark list-group-item-action" (click)="onSelect(song)">
-                  <div class="d-flex w-100 justify-content-between">
-                  <h6 class="mb-1" >{{song.name}}</h6>
-                  <small >{{song.time}}</small>
+                  <div class="d-flex w-100 justify-content-between ">
+                    <h6 class="mb-1" >{{song.name}}</h6>
+                    <small >{{song.time}}</small>
                   </div>
                   <div>
                     <small>{{song.artist}}</small>
-                  </div>
-                </button>
-              </div>
+                  </div>                
+                </button>                              
+              </div>              
             </div>
-
+                           
+          </cdk-virtual-scroll-viewport>
         </div>
-
-
+        
 

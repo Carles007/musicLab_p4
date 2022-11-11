@@ -1,17 +1,20 @@
 <div *ngIf="song" class="card">
-  <div class="row">
-    <div class="text-center">
+  <div class="row justify-content-center">  
+
+    <div class="col-4">
       <img class="rounded mx-auto d-block img-thumbnail" src="{{song.imagen}}" >
     </div>
-    <div>
-      <h4></h4>
+    <div class="col-4">    
       <div>
-          <h6 >Name: {{song.name}}</h6>
-          <h6 >Artist: {{song.artist}}</h6>
-          <h6 >Album: {{song.album}}</h6>
-          <h6> Year: {{song.year}}></h6>
-          <h6 >Duration: {{song.time}}</h6>
+          <br><br>
+          <p>Name:  {{song.name}}<p>
+          <p>Artist:  {{song.artist}}</p>
+          <p>Album:  {{song.album}}</p>
+          <p> Year:  {{song.year}}</p>
+          <p>Duration: {{song.time}}</p>
       </div>
-  </div>
+    
+    </div>
+    
   </div>
 </div>

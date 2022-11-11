@@ -10,6 +10,11 @@ import { ProgressbarComponent } from './progressbar/progressbar.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { Filter1Pipe } from './pipes/filter1.pipe';
 import { Filter2Pipe } from './pipes/filter2.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { SelectorPipe } from './pipes/selector.pipe';
+
+
 
 
 
@@ -23,11 +28,14 @@ import { Filter2Pipe } from './pipes/filter2.pipe';
     ProgressbarComponent,
     FilterPipe,
     Filter1Pipe,
-    Filter2Pipe
+    Filter2Pipe,
+    SelectorPipe
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ScrollingModule
 
   ],
   providers: [],
