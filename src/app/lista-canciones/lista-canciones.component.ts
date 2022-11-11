@@ -1,7 +1,8 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Song } from '../song';
 import { SONGS } from '../mock-songs';
 import { FilterPipe } from '../pipes/filter.pipe';
+
 
 @Component({
   selector: 'app-lista-canciones',
@@ -18,9 +19,15 @@ export class ListaCancionesComponent implements OnInit {
   filterSong2 = '';
 
 
-  @Output() songEvent = new EventEmitter<Song>();
+ 
 
+
+  @Output() songEvent = new EventEmitter<Song>();
+ 
+ 
   constructor() { }
+
+  
 
   ngOnInit(): void { }
 
@@ -34,6 +41,24 @@ export class ListaCancionesComponent implements OnInit {
   onSelect(song: Song): void {    
     this.selectedSong = song;
     this.songEvent.emit(this.selectedSong);
+
   }
 
+  nextSong(currentSong: Song): Song {   
+    let nextSong = this.songList[0];
+    
+    for(let i of this.songList){
+      if(i == currentSong){
+        let index = this.songList.indexOf(i);
+        console.log('NextSong');
+        nextSong = this.songList[index+1]
+      }
+    }
+    this.songEvent.emit(nextSong);
+    this.onSelect(nextSong);
+    return nextSong;
+
+    
+    
+  }
 }

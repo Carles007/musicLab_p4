@@ -1,5 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output , EventEmitter } from '@angular/core';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {ListaCancionesComponent} from '../lista-canciones/lista-canciones.component';
+import { Song } from '../song';
 
 
 @Component({
@@ -13,19 +15,26 @@ export class MusicControlComponent implements OnInit {
   playing: boolean = false;
   showVolume: boolean = false;
  // volume: number=0.5;
+ currentSong: Song;
 
   constructor() { }
   progress = 0;
 
 
   ngOnInit(): void {
+    
+    
   }
 
-  @Input() set song(src: string) {
-    this.audio.src = src;
+  @Input() set song(src: Song) {
+    this.currentSong = src;
+    this.audio.src = src.url;
     this.audio.load();
     this.audio.volume = 0.5;
+    this.audio.play();
   }
+
+
 
   playSound() {
 
@@ -53,14 +62,22 @@ export class MusicControlComponent implements OnInit {
     this.audio.play();
     this.audio.load();
 
-    //this.audio.previous();
+    //this.audio.previous(); 
     this.audio.currentTime = 0;
   }
   nextSound() {
+    let ListaCanciones= new ListaCancionesComponent();
+    let nextCancion = ListaCanciones.nextSong(this.currentSong)
+    //this.audio.currentTime = 0;
+    this.audio.src = nextCancion.url;
+    this.audio.pause();
+    this.audio.load();
+    this.audio.volume = 0.5;
+    this.audio.play();
+    this.currentSong=nextCancion;
 
-    //this.audio.next();
-    this.audio.currentTime = 0;
-  }
+
+    }
 
   updateProgress() {
 
@@ -71,7 +88,7 @@ export class MusicControlComponent implements OnInit {
 
 
     //console.log("Progreso:" + this.progress);
-    console.log("Progreso:" + this.audio.currentTime);
+    //console.log("Progreso:" + this.audio.currentTime);
   }
   secondsToString(seconds: number): string {
     if (isNaN(seconds)) seconds = 0;

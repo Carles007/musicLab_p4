@@ -9,11 +9,12 @@ import { Song } from './song';
 })
 export class AppComponent {
   title: string = 'MusicLab';
-  song: string = "";
+  song: Song;
   
 
   receiveSong($event: Song) {
-    this.song = $event.url  
+    this.song = $event; 
   }
 
+ 
 }

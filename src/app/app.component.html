@@ -9,13 +9,14 @@
 <!-- Vertical navbar -->
 <div class="vertical-nav bg-white" id="sidebar">
   <div class="py-4 px-3 mb-4 bg-light">
-    <div class="media d-flex align-items-center"><img src="../assets/img/logo.PNG" alt="..." width="65"
+    <div class="media d-flex align-items-center"><img src="../assets/img/MusicLab.jpg" alt="150" width="180"
         class="mr-3 rounded-circle img-thumbnail shadow-sm">
+      </div>  
       <div class="media-body">
         <h4 class="m-0">MusicLab</h4>
         <p class="font-weight-light text-muted mb-0">Experiment music</p>
       </div>
-    </div>
+    
   </div>
 
   <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Lista de reproducción</p>
@@ -66,13 +67,17 @@
 <div class="page-content p-5 bg-white" id="content">
 
 
-   <div class="text-center"><img src="../assets/img/MusicLab.jpg" id="logo"></div>
+
+  <!-- <div class="text-center"><img src="../assets/img/MusicLab.jpg" class="rounded" height="180px"></div>-->
+
 
 
 
 
   <!-- <app-song></app-song>-->
+  <app-song-detail  [song]="song"></app-song-detail>
   <app-lista-canciones id="songList" (songEvent)="receiveSong($event)"></app-lista-canciones>
   <app-music-control id="controls" [song]="song"></app-music-control>
+
 
 </div>

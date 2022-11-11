@@ -9,6 +9,7 @@ import { Song } from '../song';
 export class SongDetailComponent implements OnInit {
 
   @Input() song?: Song;
+  
 
   constructor() { }
 
