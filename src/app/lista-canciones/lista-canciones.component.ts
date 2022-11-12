@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Song } from '../song';
-import { SONGS } from '../mock-songs';
+import { Songs } from '../mock-songs';
 import { FilterPipe } from '../pipes/filter.pipe';
 
 
@@ -11,42 +11,44 @@ import { FilterPipe } from '../pipes/filter.pipe';
 })
 export class ListaCancionesComponent implements OnInit {
 
-  songList: Song[] = SONGS;
+  songObj = new Songs();
   selectedSong?: Song;
+  songList: Song[] = this.songObj.SONGS;
+
   sortBy: string = "name";
   filterSong = '';
   filterSong1 = '';
   filterSong2 = '';
 
 
- 
+
 
 
   @Output() songEvent = new EventEmitter<Song>();
- 
- 
+
+
   constructor() { }
 
-  
+
 
   ngOnInit(): void { }
 
   // get songs() {
   //   type ObjectKey = keyof typeof this.songList[0];
   //   const field = this.sortBy as ObjectKey;
-        
+
   //   return this.songList.sort((a, b) => a[field] > b[field] ? 1 : -1);
   // }
 
-  onSelect(song: Song): void {    
+  onSelect(song: Song): void {
     this.selectedSong = song;
     this.songEvent.emit(this.selectedSong);
 
   }
 
-  nextSong(currentSong: Song): Song {   
+  nextSong(currentSong: Song): Song {
     let nextSong = this.songList[0];
-    
+
     for(let i of this.songList){
       if(i == currentSong){
         let index = this.songList.indexOf(i);
@@ -58,7 +60,7 @@ export class ListaCancionesComponent implements OnInit {
     this.onSelect(nextSong);
     return nextSong;
 
-    
-    
+
+
   }
 }
