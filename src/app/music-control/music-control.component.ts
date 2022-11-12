@@ -31,7 +31,7 @@ export class MusicControlComponent implements OnInit {
     this.audio.src = src.url;
     this.audio.load();
     this.audio.volume = 0.5;
-    this.audio.play();
+    this.playSound();
   }
 
 
