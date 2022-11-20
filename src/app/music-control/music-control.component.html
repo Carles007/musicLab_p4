@@ -90,11 +90,25 @@
     <div class="col-10">
       <mat-progress-bar style="height:10px; margin: 5% 5%" background="blue" height=3 mode="determinate" value={{progress}}></mat-progress-bar>
     </div>
+
     <div class="col-2">
 
       <mat-icon>volume_up</mat-icon>      
-          <mat-slider type="range" min="0" max="1" [(ngModel)]="audio.volume" step="0.1" id="mislider">        
+      <mat-slider vertical type="range" min="0" max="10" [(ngModel)]="audio.volume" step="1" id="mislider">        
       </mat-slider>
+
+    </div>
+
+    
+    <div class="col-2">
+ <!--
+      <mat-icon>volume_up</mat-icon>      
+          <mat-slider type="range" min="0" max="10" [(ngModel)]="audio.volume" step="1" id="mislider">        
+      </mat-slider>
+-->
+     
+
+      
       <!-- <i
         class="bi bi-volume-up volume-up"
         style="font-size: 30px; color: blue"
