@@ -12,6 +12,7 @@ export class MusicControlComponent implements OnInit {
   audio: HTMLAudioElement = new Audio();
   playing: boolean = false;
   repeat: boolean = false;
+  favorite: boolean = false;
   showVolume: boolean = false;
   // volume: number=0.5;
   currentSong: Song | undefined;
