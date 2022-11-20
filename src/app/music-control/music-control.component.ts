@@ -35,7 +35,7 @@ export class MusicControlComponent implements OnInit {
   }
 
   playSound() {
-    console.log("play sound");
+    console.log("play sound", this.audio.duration);
     console.log(this.currentSong);
 
     this.audio.play();
