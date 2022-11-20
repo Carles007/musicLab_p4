@@ -46,9 +46,9 @@ export class ListaCancionesComponent implements OnInit {
 
   }
 
-  nextSong(currentSong: Song): Song {
+  nextSong(currentSong: Song): Song {   
     let nextSong = this.songList[0];
-
+    
     for(let i of this.songList){
       if(i == currentSong){
         let index = this.songList.indexOf(i);
@@ -60,7 +60,7 @@ export class ListaCancionesComponent implements OnInit {
     this.onSelect(nextSong);
     return nextSong;
 
-
-
+    
+    
   }
 }

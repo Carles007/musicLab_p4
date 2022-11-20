@@ -8,7 +8,7 @@ export class Filter1Pipe implements PipeTransform {
   transform(value: any, arg: any): any {
     const resultSongs = [];
     for(const song of value){
-        if(song.artist.indexOf(arg) > -1){
+        if(song.artist.toLowerCase().indexOf(arg.toLowerCase()) > -1){
           resultSongs.push(song);
         }
     }

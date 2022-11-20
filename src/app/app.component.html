@@ -25,7 +25,7 @@
     <li class="nav-item">
       <a href="#" class="nav-link text-dark font-italic bg-light">
         <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
-        Lorem
+        Carles
       </a>
     </li>
     <li class="nav-item">
@@ -54,7 +54,7 @@
     <li class="nav-item">
       <a href="#" class="nav-link text-dark font-italic">
         <i class="fa fa-area-chart mr-3 text-primary fa-fw"></i>
-        Reserva
+        Favoritos
       </a>
     </li>
 
@@ -76,8 +76,14 @@
 
   <!-- <app-song></app-song>-->
   <app-song-detail  [song]="song"></app-song-detail>
-  <app-lista-canciones id="songList" (songEvent)="receiveSong($event)"></app-lista-canciones>
-  <app-music-control id="controls" [song]="song"></app-music-control>
+  <app-lista-canciones #listaCanciones id="songList" (songEvent)="receiveSong($event)"></app-lista-canciones>
+  
+  <app-music-control id="controls" [song]="song"
+    (deleteEvent)="listaCanciones.deleteSong($event)"
+    (prevEvent)="listaCanciones.previousSong()"
+    (nextEvent)="listaCanciones.nextSong()"
+  ></app-music-control>
+
 
 
 </div>

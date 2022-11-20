@@ -1,0 +1,67 @@
+    <div class="row">
+      <div class="row"  id="ordenacion">
+        <label for="filtro1">Filter by video name: </label>
+        <div id="filtro1" class="form-group col-sm-12" style="float:none;margin:auto;">
+          <input type="text" class="form-control" name="filterVideo" placeholder="Filter by video name..." [(ngModel)]="filterVideo">
+
+        </div>
+      </div>
+      <div class="row"  id="ordenacion">
+        <label for="filtro2">Filter by artist: </label>
+        <div id="filtro1" class="form-group col-sm-12" style="float:none;margin:auto;">
+          <input type="text" class="form-control" name="filterVideo1" placeholder="Filter by artist..." [(ngModel)]="filterVideo1">
+
+        </div>
+      </div>
+      <div class="row"  id="ordenacion">
+        <label for="filtro3">Filter by album: </label>
+        <div id="filtro3" class="form-group col-sm-12" style="float:none;margin:auto;">
+          <input type="text" class="form-control" name="filterVideo1" placeholder="Filter by album..." [(ngModel)]="filterVideo2">
+
+        </div>
+      </div>
+      <div class="col-sm-12" id="ordenacion">
+        
+        <label for="orden">Sort by: </label>
+        <select id="orden" [(ngModel)]="sortBy">
+          <option value="name">Name</option>
+          <option value="artist">Artist</option>
+          <option value="album">Album</option>
+          <option value="year">Year</option>
+        </select>
+      </div>
+
+    <div class="col-sm-12" style="float:none;margin:auto;">
+        <!-- <app-video-detail [video]="selectedVideo"></app-video-detail> -->
+
+    </div>
+    </div>
+
+
+
+    <div class="row width: 20px; height: 2px; line-height: 3em; overflow:scroll; border: thin #000 solid; padding: 5px;">
+
+            <cdk-virtual-scroll-viewport itemSize="10" style="height: 250px">       
+          
+            <div *ngFor="let video of videoList |
+                 filter:filterVideo | 
+                 filter1:filterVideo1 | 
+                 filter2:filterVideo2 |
+                 selector:sortBy" >
+              <div class="d-grid gap-2">
+                <button [class.selected]="video === selectedVideo" type="button" class="list-group-item-dark list-group-item-action" (click)="onSelect(video)">
+                  <div class="d-flex w-100 justify-content-between ">
+                    <h6 class="mb-1" >{{video.name}}</h6>
+                    <small >{{video.time}}</small>
+                  </div>
+                  <div>
+                    <small>{{video.artist}}</small>
+                  </div>                
+                </button>                              
+              </div>              
+            </div>
+                           
+          </cdk-virtual-scroll-viewport>
+        </div>
+        
+
