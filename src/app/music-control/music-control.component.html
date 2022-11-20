@@ -88,13 +88,7 @@
   </div>
   <div class="row">
     <div class="col-10">
-      <input
-        type="range"
-        min="0"
-        [max]="audio.duration"
-        [(ngModel)]="audio.currentTime"
-        style="width: 100%"
-      />
+      <mat-progress-bar style="height:10px; margin: 5% 5%" background="blue" height=3 mode="determinate" value={{progress}}></mat-progress-bar>
     </div>
     <div class="col-2">
 
