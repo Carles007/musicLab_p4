@@ -5,4 +5,9 @@ i {
     padding-left: 15px;
   }
 
- 
+.volume-up {
+  vertical-align: top;
+}
+ #mislider {
+  transform: rotate(270deg) translate(100px, -35px);
+ }

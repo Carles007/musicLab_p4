@@ -1,103 +1,114 @@
-import { Component, OnInit, Input, Output , EventEmitter } from '@angular/core';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
-import {ListaCancionesComponent} from '../lista-canciones/lista-canciones.component';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { ListaCancionesComponent } from '../lista-canciones/lista-canciones.component';
 import { Song } from '../song';
-
 
 @Component({
   selector: 'app-music-control',
   templateUrl: './music-control.component.html',
-  styleUrls: ['./music-control.component.css']
+  styleUrls: ['./music-control.component.css'],
 })
 export class MusicControlComponent implements OnInit {
-
   audio: HTMLAudioElement = new Audio();
   playing: boolean = false;
- // volume: number=0.5;
- currentSong: Song;
+  repeat: boolean = false;
+  showVolume: boolean = false;
+  // volume: number=0.5;
+  currentSong: Song | undefined;
 
-  constructor() { }
+  @Output() deleteEvent = new EventEmitter<Song>();
+  @Output() nextEvent = new EventEmitter();
+  @Output() prevEvent = new EventEmitter();
+
+  constructor() {}
   progress = 0;
 
-
-  ngOnInit(): void {
-    
-    
-  }
+  ngOnInit(): void {}
 
   @Input() set song(src: Song) {
     this.currentSong = src;
     this.audio.src = src.url;
     this.audio.load();
     this.audio.volume = 0.5;
-    this.audio.play();
+    this.playSound();
+    this.playing = true;
   }
 
-
-
   playSound() {
+    console.log("play sound");
+    console.log(this.currentSong);
 
     this.audio.play();
     this.updateProgress();
     this.playing = true;
-    
-
   }
 
   pauseSound() {
-
     this.audio.pause();
     this.playing = false;
-
   }
+
   stopSound() {
-
     this.audio.pause();
     this.audio.currentTime = 0;
     this.playing = false;
-
   }
+
   previousSound() {
-    this.audio.play();
-    this.audio.load();
-
-    //this.audio.previous(); 
-    this.audio.currentTime = 0;
+    this.stopSound();
+    this.prevEvent.emit();
   }
+
   nextSound() {
-    let ListaCanciones= new ListaCancionesComponent();
-    let nextCancion = ListaCanciones.nextSong(this.currentSong)
-    //this.audio.currentTime = 0;
-    this.audio.src = nextCancion.url;
-    this.audio.pause();
-    this.audio.load();
-    this.audio.volume = 0.5;
-    this.audio.play();
-    this.currentSong=nextCancion;
-
-
+    this.stopSound();
+    this.nextEvent.emit();
+  }
+  repeatSound() {
+    let audio = new Audio();
+    //   var playlist = this.state.sequence; // load the sequence of sounds
+    //   audio.src = playlist[0].src; // set the source of the first file in my array
+    audio.play();
+    // when the song ends, load the new sound
+    audio.addEventListener(
+      'ended',
+      function () {
+        // increment playlist[i].src
+      },
+      true
+    );
+    audio.loop = false;
+  }
+  deleteSound() {
+    if (confirm('Are you sure you want to delete this song?')) {
+      this.stopSound();
+      this.deleteEvent.emit(this.currentSong);
     }
+  }
 
   updateProgress() {
-
-    this.progress = (this.audio.currentTime / this.audio.duration * 100 || 0)
+    this.progress = (this.audio.currentTime / this.audio.duration) * 100 || 0;
     setTimeout(() => {
       this.updateProgress();
-    }, 1000)
+    }, 1000);
 
-
-    //console.log("Progreso:" + this.progress);
-    //console.log("Progreso:" + this.audio.currentTime);
+    if (this.progress == 100) {
+      this.stopSound();
+      if (this.repeat) {
+        this.playSound();
+      } else {
+        this.nextSound();
+      }
+    }
   }
   secondsToString(seconds: number): string {
     if (isNaN(seconds)) seconds = 0;
 
     let hour: string | number = Math.floor(seconds / 3600);
-    hour = (hour < 10) ? '0' + hour : hour;
+    hour = hour < 10 ? '0' + hour : hour;
     let minute: string | number = Math.floor((seconds / 60) % 60);
-    minute = (minute < 10) ? '0' + minute : minute;
+    minute = minute < 10 ? '0' + minute : minute;
     let second: string | number = Math.floor(seconds % 60);
-    second = (second < 10) ? '0' + second : second;
+    second = second < 10 ? '0' + second : second;
 
     return `${hour}:${minute}:${second}`;
   }

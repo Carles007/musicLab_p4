@@ -9,7 +9,7 @@ import { Song } from './song';
 })
 export class AppComponent {
   title: string = 'MusicLab';
-  song: Song;
+  song!: Song;
   
 
   receiveSong($event: Song) {

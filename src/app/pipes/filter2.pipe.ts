@@ -9,7 +9,7 @@ export class Filter2Pipe implements PipeTransform {
     const resultSongs = [];
     
     for(const song of value){
-        if(song.album.indexOf(arg) > -1){
+        if(song.album.toLowerCase().indexOf(arg.toLowerCase()) > -1){
           resultSongs.push(song);
         }
     }

@@ -1,4 +1,6 @@
-
+#logo {
+  width: 500px;
+}
 
 .vertical-nav {
     min-width: 17rem;
@@ -33,6 +35,16 @@
     background-color:#dbf0fe;
   }
 
+  #songList {
+    width: 50%;
+    float: left;
+  }
+
+  #controls {
+    width: calc(50% - 2em);
+    float: left;
+    margin: 260px 0 0 2em;
+  }
 
   @media (max-width: 768px) {
     #sidebar {

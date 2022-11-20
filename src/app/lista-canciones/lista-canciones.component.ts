@@ -44,21 +44,23 @@ export class ListaCancionesComponent implements OnInit {
 
   }
 
-  nextSong(currentSong: Song): Song {   
-    let nextSong = this.songList[0];
-    
-    for(let i of this.songList){
-      if(i == currentSong){
-        let index = this.songList.indexOf(i);
-        console.log('NextSong');
-        nextSong = this.songList[index+1]
-      }
-    }
-    this.songEvent.emit(nextSong);
-    this.onSelect(nextSong);
-    return nextSong;
+  deleteSong(song: Song): void {
+    this.nextSong();
+    if (this.selectedSong == song) this.previousSong();
+    if (this.selectedSong == song) this.selectedSong = undefined;
 
-    
-    
+    this.songList = this.songList.filter (s => s != song);
+  }
+
+  nextSong(): void {   
+    const currentIndex = this.songList.findIndex(s => s == this.selectedSong);
+    const nextIndex = Math.min(currentIndex + 1, this.songList.length);
+    this.onSelect(this.songList[nextIndex]);
+  }
+
+  previousSong(): void {
+    const currentIndex = this.songList.findIndex(s => s == this.selectedSong);
+    const prevIndex = Math.max(currentIndex - 1, 0);
+    this.onSelect(this.songList[prevIndex]);
   }
 }
