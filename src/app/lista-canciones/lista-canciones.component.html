@@ -36,9 +36,27 @@
 
     </div>
     </div>
+  
+    <div class="row container-list">
+      <cdk-virtual-scroll-viewport itemSize="10" style="height: 250px">       
+      <mat-selection-list [multiple]="false">
+        <mat-list-option *ngFor="let song of songList | 
+          filter:filterSong |
+          filter1:filterSong1 | 
+          filter2:filterSong2 |
+          selector:sortBy"
+          >                              
+        <div class="container-item" (click)="onSelect(song)">                                
+          <div class="child-item"> {{song.name}} </div>                
+          <div class="child-item"> {{song.artist}} </div>
+          <div><img class="icon" src="{{song.imagen}}"></div>
+        </div>
+      </mat-list-option>
+      </mat-selection-list>                                     
+    </cdk-virtual-scroll-viewport>
+</div>
 
-
-
+<!--
     <div class="row width: 20px; height: 2px; line-height: 3em; overflow:scroll; border: thin #000 solid; padding: 5px;">
 
             <cdk-virtual-scroll-viewport itemSize="10" style="height: 250px">       
@@ -65,3 +83,4 @@
         </div>
         
 
+-->
