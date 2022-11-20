@@ -10,8 +10,10 @@ i {
 }
  #mislider {
   transform: translate(-10px, -150px);
+ 
  }
 
+ 
  .example-label {
   display: table-cell;
   font-size: 14px;
