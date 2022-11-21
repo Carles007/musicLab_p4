@@ -9,11 +9,13 @@ i {
   vertical-align: top;
 }
  #mislider {
+
+
   transform: translate(-10px, -150px);
  
  }
 
- 
+
  .example-label {
   display: table-cell;
   font-size: 14px;
@@ -22,11 +24,12 @@ i {
 }
 
 .example-button-row {
-  margin-left: 5 px;
+  
   display: table-cell;
   max-width: 600px;
 }
  
+
   .slider-row {
     
     display: table-cell;
@@ -38,10 +41,11 @@ i {
   }
   
   .example-flex-container {
+    margin-top: 50px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin-left: -50px;
+    margin-left: 20px;
   }
   
   .example-button-container {
