@@ -10,9 +10,9 @@ i {
 }
  #mislider {
 
-
-  transform: translate(-10px, -150px);
- 
+  transform: translate(0px, 0px);
+  margin-bottom: 15px;
+  
  }
 
 
@@ -52,4 +52,10 @@ i {
     display: flex;
     justify-content: center;
     width: fit-content;
+  }
+
+  .icon-2x{
+    transform: scale(2);
+    margin-right:60px;
+    margin-top:10px;
   }
