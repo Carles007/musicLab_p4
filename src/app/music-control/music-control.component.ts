@@ -15,6 +15,7 @@ export class MusicControlComponent implements OnInit {
   showVolume: boolean = false;
   // volume: number=0.5;
   currentSong: Song | undefined;
+  volumenSelected:number =0.1;
 
   @Output() deleteEvent = new EventEmitter<Song>();
   @Output() nextEvent = new EventEmitter();
@@ -29,7 +30,7 @@ export class MusicControlComponent implements OnInit {
     this.currentSong = src;
     this.audio.src = src.url;
     this.audio.load();
-    this.audio.volume = 0.5;
+    //this.audio.volume = 0.5;
     this.playSound();
     this.playing = true;
   }
@@ -86,6 +87,7 @@ export class MusicControlComponent implements OnInit {
   }
 
   updateProgress() {
+    this.audio.volume = this.volumenSelected;
     this.progress = (this.audio.currentTime / this.audio.duration) * 100 || 0;
     setTimeout(() => {
       this.updateProgress();

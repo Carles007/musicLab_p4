@@ -8,3 +8,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-slider-thumb {
+	background-color: blueviolet !important;
+}
+.mat-slider-thumb-label {
+	background-color: blueviolet!important;
+}
+.mat-slider-track-fill {
+	background-color: blueviolet !important;
+}

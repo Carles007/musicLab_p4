@@ -102,12 +102,55 @@
       </div>
     </div>
   </div>
-</div>
-</div>
 
- <div class="row">
   
-  <div class="col" style="margin-top: 20px; margin-left: 150px;">
+
+  <div class="row">
+    <div class="col-8" style="text-align: left">
+      {{ secondsToString(audio.duration - audio.currentTime) }}
+    </div>
+    <div class="col-2" style="text-align: right">
+      {{ secondsToString(audio.duration) }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-10">
+      <mat-progress-bar style="height:10px; margin: 5% 5%" background="blue" height=3 mode="determinate" value={{progress}}></mat-progress-bar>
+    </div>
+
+    <div class="col-2">
+      <mat-icon color="primary">volume_up</mat-icon>      
+      <mat-slider vertical type="range" min="0" max="1"  step="0.1" id="mislider" [(ngModel)]="volumenSelected">           
+      </mat-slider>
+    </div>
+
+    
+    <div class="col-2">
+ <!--
+      <mat-icon>volume_up</mat-icon>      
+          <mat-slider type="range" min="0" max="10" [(ngModel)]="audio.volume" step="1" id="mislider">        
+      </mat-slider>
+-->
+     
+
+      
+      <!-- <i
+        class="bi bi-volume-up volume-up"
+        style="font-size: 30px; color: blue"
+        (click)="showVolume = !showVolume"
+      ></i> 
+      <input
+        *ngIf="showVolume"
+        type="range"
+        min="0"
+        max="1"
+        [(ngModel)]="audio.volume"
+        step="0.1"
+        id="mislider"
+      /> -->
+    </div>
+  </div>
+
 
     <mat-icon color="primary">favorite</mat-icon>
     <mat-icon color="primary" [ngClass]="repeat ? 'bi-repeat-1' : 'bi-arrow-repeat'">repeat</mat-icon>
