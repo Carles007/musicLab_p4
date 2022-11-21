@@ -31,12 +31,7 @@ export class ListaCancionesComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  // get songs() {
-  //   type ObjectKey = keyof typeof this.songList[0];
-  //   const field = this.sortBy as ObjectKey;
-        
-  //   return this.songList.sort((a, b) => a[field] > b[field] ? 1 : -1);
-  // }
+ 
 
   onSelect(song: Song): void {    
     this.selectedSong = song;
