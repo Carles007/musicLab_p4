@@ -1,20 +1,22 @@
-<div *ngIf="song" class="card">
-  <div class="row justify-content-center">  
+<mat-card  *ngIf="song" class="container-card">
+  <mat-card-header>
+    <img src="{{song.imagen}}"  mat-card-avatar />
+    <mat-card-title>Name: {{song.name}}</mat-card-title>
+    <mat-card-subtitle>Artist: {{song.artist}}</mat-card-subtitle>
+  </mat-card-header>
+  <img img mat-card-md-image src="{{song.imagen}}" alt="Photo of the song album">
+  <mat-card-content>
+      <p>Name:  {{song.name}}<p>
+      <p>Artist:  {{song.artist}}</p>
+      <p>Album:  {{song.album}}</p>
+      <p>Year:  {{song.year}}</p>
+      <p>Duration: {{song.time}}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions>
+</mat-card>
 
-    <div class="col-6">
-      <img class="rounded mx-auto d-block img-thumbnail" src="{{song.imagen}}" >
-    </div>
-    <div class="col-4">    
-      <div>
-          <br><br>
-          <p>Name:  {{song.name}}<p>
-          <p>Artist:  {{song.artist}}</p>
-          <p>Album:  {{song.album}}</p>
-          <p> Year:  {{song.year}}</p>
-          <p>Duration: {{song.time}}</p>
-      </div>
-    
-    </div>
-    
-  </div>
-</div>
+
+
