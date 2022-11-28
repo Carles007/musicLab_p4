@@ -13,27 +13,28 @@ export class ListaCancionesComponent implements OnInit {
 
   songList: Song[] = SONGS;
   selectedSong?: Song;
+
   sortBy: string = "name";
   filterSong = '';
   filterSong1 = '';
   filterSong2 = '';
 
+  @Input() song?: Song;
 
- 
 
 
   @Output() songEvent = new EventEmitter<Song>();
- 
- 
+
+
   constructor() { }
 
-  
+
 
   ngOnInit(): void { }
 
- 
 
-  onSelect(song: Song): void {    
+
+  onSelect(song: Song): void {
     this.selectedSong = song;
     this.songEvent.emit(this.selectedSong);
 
@@ -47,7 +48,7 @@ export class ListaCancionesComponent implements OnInit {
     this.songList = this.songList.filter (s => s != song);
   }
 
-  nextSong(): void {   
+  nextSong(): void {
     const currentIndex = this.songList.findIndex(s => s == this.selectedSong);
     const nextIndex = Math.min(currentIndex + 1, this.songList.length);
     this.onSelect(this.songList[nextIndex]);
