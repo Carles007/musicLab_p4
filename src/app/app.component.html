@@ -75,7 +75,7 @@
 
 
   <!-- <app-song></app-song>-->
-  <app-song-detail  [song]="song"></app-song-detail>
+  <app-song-detail id="songDetails" [song]="song"></app-song-detail>
   <app-lista-canciones #listaCanciones id="songList" (songEvent)="receiveSong($event)"></app-lista-canciones>
   
   <app-music-control id="controls" [song]="song"

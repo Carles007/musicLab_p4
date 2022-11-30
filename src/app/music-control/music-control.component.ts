@@ -16,13 +16,13 @@ export class MusicControlComponent implements OnInit {
   // volume: number=0.5;
   currentSong: Song | undefined;
   volumenSelected:number =0.1;
+  progress = 0;
 
   @Output() deleteEvent = new EventEmitter<Song>();
   @Output() nextEvent = new EventEmitter();
   @Output() prevEvent = new EventEmitter();
 
   constructor() {}
-  progress = 0;
 
   ngOnInit(): void {}
 
@@ -89,9 +89,11 @@ export class MusicControlComponent implements OnInit {
   updateProgress() {
     this.audio.volume = this.volumenSelected;
     this.progress = (this.audio.currentTime / this.audio.duration) * 100 || 0;
+    
     setTimeout(() => {
       this.updateProgress();
     }, 1000);
+    
 
     if (this.progress == 100) {
       this.stopSound();
