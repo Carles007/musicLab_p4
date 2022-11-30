@@ -11,11 +11,18 @@ import { Song } from '../song';
 export class MusicControlComponent implements OnInit {
   audio: HTMLAudioElement = new Audio();
   playing: boolean = false;
- // volume: number=0.5;
- currentSong: Song;
+  repeat: boolean = false;
+  showVolume: boolean = false;
+  // volume: number=0.5;
+  currentSong: Song | undefined;
+  volumenSelected:number =0.1;
+  progress = 0;
+
+  @Output() deleteEvent = new EventEmitter<Song>();
+  @Output() nextEvent = new EventEmitter();
+  @Output() prevEvent = new EventEmitter();
 
   constructor() {}
-  progress = 0;
 
   ngOnInit(): void {}
 
@@ -23,12 +30,13 @@ export class MusicControlComponent implements OnInit {
     this.currentSong = src;
     this.audio.src = src.url;
     this.audio.load();
-    this.audio.volume = 0.5;
-    this.audio.play();
+    //this.audio.volume = 0.5;
+    this.playSound();
+    this.playing = true;
   }
 
   playSound() {
-    console.log("play sound");
+    console.log("play sound", this.audio.duration);
     console.log(this.currentSong);
 
     this.audio.play();
@@ -37,21 +45,22 @@ export class MusicControlComponent implements OnInit {
   }
 
   pauseSound() {
+
     this.audio.pause();
     this.playing = false;
-  }
 
+  }
   stopSound() {
+
     this.audio.pause();
     this.audio.currentTime = 0;
     this.playing = false;
-  }
 
+  }
   previousSound() {
     this.stopSound();
     this.prevEvent.emit();
   }
-
   nextSound() {
     this.stopSound();
     this.nextEvent.emit();
@@ -79,10 +88,13 @@ export class MusicControlComponent implements OnInit {
   }
 
   updateProgress() {
+    this.audio.volume = this.volumenSelected;
     this.progress = (this.audio.currentTime / this.audio.duration) * 100 || 0;
+    
     setTimeout(() => {
       this.updateProgress();
     }, 1000);
+    
 
     if (this.progress == 100) {
       this.stopSound();

@@ -1,5 +1,34 @@
-    <div class="row">
-      <div class="row"  id="ordenacion">
+<div class="container-list filters">
+  <mat-form-field appearance="fill">
+    <mat-label>Filter by song name:</mat-label>
+    <input matInput name="filterSong" [(ngModel)]="filterSong" type="text" />
+  </mat-form-field>
+
+  <br />
+  <mat-form-field appearance="fill">
+    <mat-label>Filter by artist: </mat-label>
+    <input
+      matInput
+      name="filterSong1"
+      [(ngModel)]="filterSong1"
+      type="text"
+      placeholder="Filter by artist..."
+    />
+  </mat-form-field>
+
+  <br />
+  <mat-form-field appearance="fill">
+    <mat-label>Filter by album: </mat-label>
+    <input
+      matInput
+      name="filterSong2"
+      [(ngModel)]="filterSong2"
+      type="text"
+      placeholder="Filter by album..."
+    />
+  </mat-form-field>
+
+  <!-- <div class="row"  id="ordenacion">
         <label for="filtro1">Filter by song name: </label>
         <div id="filtro1" class="form-group col-sm-12" style="float:none;margin:auto;">
           <input type="text" class="form-control" name="filterSong" placeholder="Filter by song name..." [(ngModel)]="filterSong">
@@ -19,33 +48,49 @@
           <input type="text" class="form-control" name="filterSong1" placeholder="Filter by album..." [(ngModel)]="filterSong2">
 
         </div>
-      </div>
-      <div class="col-sm-12" id="ordenacion">
-        
-        <label for="orden">Sort by: </label>
-        <select id="orden" [(ngModel)]="sortBy">
-          <option value="name">Name</option>
-          <option value="artist">Artist</option>
-          <option value="album">Album</option>
-          <option value="year">Year</option>
-        </select>
-      </div>
+      </div> -->
+  <br>
+  <mat-form-field appearance="fill" color="warn">
+    <mat-label>Sort by:</mat-label>
+    <mat-select [(ngModel)]="sortBy">
+      <mat-option value="name">Name</mat-option>
+      <mat-option value="artist">Artist</mat-option>
+      <mat-option value="album">Album</mat-option>
+      <mat-option value="year">Year</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
 
-    <div class="col-sm-12" style="float:none;margin:auto;">
-        <!-- <app-song-detail [song]="selectedSong"></app-song-detail> -->
+<div class="container-list">
+  <cdk-virtual-scroll-viewport itemSize="10" style="height: 500px">
+    <mat-selection-list [multiple]="false">
+      <mat-list-option
+        *ngFor="
+          let song of songList
+            | filter: filterSong
+            | filter1: filterSong1
+            | filter2: filterSong2
+            | selector: sortBy
+        "
+      >
+        <div class="container-item" (click)="onSelect(song)">
+          <div class="child-item">{{ song.name }}</div>
+          <div class="child-item">{{ song.artist }}</div>
+          <div><img class="icon" src="{{ song.imagen }}" /></div>
+        </div>
+      </mat-list-option>
+    </mat-selection-list>
+  </cdk-virtual-scroll-viewport>
+</div>
 
-    </div>
-    </div>
-
-
-
+<!--
     <div class="row width: 20px; height: 2px; line-height: 3em; overflow:scroll; border: thin #000 solid; padding: 5px;">
 
-            <cdk-virtual-scroll-viewport itemSize="10" style="height: 250px">       
-          
+            <cdk-virtual-scroll-viewport itemSize="10" style="height: 250px">
+
             <div *ngFor="let song of songList |
-                 filter:filterSong | 
-                 filter1:filterSong1 | 
+                 filter:filterSong |
+                 filter1:filterSong1 |
                  filter2:filterSong2 |
                  selector:sortBy" >
               <div class="d-grid gap-2">
@@ -56,12 +101,13 @@
                   </div>
                   <div>
                     <small>{{song.artist}}</small>
-                  </div>                
-                </button>                              
-              </div>              
+                  </div>
+                </button>
+              </div>
             </div>
-                           
+
           </cdk-virtual-scroll-viewport>
         </div>
-        
 
+
+-->

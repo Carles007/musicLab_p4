@@ -25,7 +25,7 @@
     <li class="nav-item">
       <a href="#" class="nav-link text-dark font-italic bg-light">
         <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
-        Carles
+        Lorem
       </a>
     </li>
     <li class="nav-item">
@@ -75,7 +75,7 @@
 
 
   <!-- <app-song></app-song>-->
-  <app-song-detail  [song]="song"></app-song-detail>
+  <app-song-detail id="songDetails" [song]="song"></app-song-detail>
   <app-lista-canciones #listaCanciones id="songList" (songEvent)="receiveSong($event)"></app-lista-canciones>
   
   <app-music-control id="controls" [song]="song"

@@ -1,20 +1,44 @@
-<div *ngIf="song" class="card">
-  <div class="row justify-content-center">  
+<mat-card  *ngIf="song" class="container-list">
+  <mat-card-header>
+    <img src="{{song.imagen}}"  mat-card-avatar />
+    <mat-card-title>Name: {{song.name}}</mat-card-title>
+    <mat-card-subtitle>Artist: {{song.artist}}</mat-card-subtitle>
+  </mat-card-header>
+  <img img mat-card-md-image src="{{song.imagen}}" alt="Photo of the song album">
+  <mat-card-content>
 
-    <div class="col-6">
-      <img class="rounded mx-auto d-block img-thumbnail" src="{{song.imagen}}" >
-    </div>
-    <div class="col-4">    
-      <div>
-          <br><br>
-          <p>Name:  {{song.name}}<p>
-          <p>Artist:  {{song.artist}}</p>
-          <p>Album:  {{song.album}}</p>
-          <p> Year:  {{song.year}}</p>
-          <p>Duration: {{song.time}}</p>
-      </div>
-    
-    </div>
-    
-  </div>
-</div>
+        <mat-form-field appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input matInput [(ngModel)]="song.name" type="text" readonly>
+
+        </mat-form-field>
+
+    <br />
+        <mat-form-field appearance="fill">
+        <mat-label>Artist</mat-label>
+        <input matInput [(ngModel)]="song.artist" type="text" readonly>
+
+        </mat-form-field>
+    <br />
+        <mat-form-field appearance="fill">
+          <mat-label>Album</mat-label>
+          <input matInput [(ngModel)]="song.album" type="text" readonly>
+
+          </mat-form-field>
+    <br />
+        <mat-form-field appearance="fill">
+        <mat-label>Year</mat-label>
+        <input matInput [(ngModel)]="song.year" type="text" readonly>
+        </mat-form-field>
+    <br />
+        <mat-form-field appearance="fill">
+          <mat-label>Duration</mat-label>
+          <input matInput [(ngModel)]="song.time" type="text" readonly>
+        </mat-form-field>
+
+  </mat-card-content>
+
+</mat-card>
+
+
+

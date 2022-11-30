@@ -29,21 +29,38 @@
     background-color:#dbf0fe;
   }
 
+  #content {
+    display: grid;
+    grid:
+    "list detail" auto
+    "list control" auto
+    / 2fr 1fr;
+    gap: 2em;
+    background-image: url('https://img.freepik.com/vector-gratis/fondo-acuarela_220290-34.jpg');
+    background-size: cover;
+  }
+
   #content.active {
     width: 100%;
     margin: 0;
     background-color:#dbf0fe;
   }
 
+  #songDetails {
+    grid-area: detail;
+  }
+
   #songList {
-    width: 50%;
-    float: left;
+    grid-area: list;
   }
 
   #controls {
+    grid-area: control;
+    /*
     width: calc(50% - 2em);
     float: left;
     margin: 260px 0 0 2em;
+    */
   }
 
   @media (max-width: 768px) {
