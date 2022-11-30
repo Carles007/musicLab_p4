@@ -7,20 +7,31 @@
   </mat-card-header>
   <img img mat-card-md-image src="{{song.imagen}}" alt="Photo of the song album">
   <mat-card-content>       
+      <mat-form-field appearance="fill">
         <mat-label>Nombre</mat-label>
-        <input matInput [(ngModel)]="song.name" type="text" placeholder=" {{song.name}}">     
-    <br />       
+        <input matInput [(ngModel)]="song.name" type="text" placeholder=" {{song.name}}">
+        </mat-form-field>
+    <br />
+        <mat-form-field appearance="fill">
         <mat-label>Artist</mat-label>
-        <input matInput [(ngModel)]="song.artist" type="text" placeholder=" {{song.artist}}">       
-    <br />       
+        <input matInput [(ngModel)]="song.artist" type="text" placeholder=" {{song.artist}}">
+        </mat-form-field>
+    <br />
+        <mat-form-field appearance="fill">
           <mat-label>Album</mat-label>
-          <input matInput [(ngModel)]="song.album" type="text" placeholder=" {{song.album}}">          
-    <br />        
+          <input matInput [(ngModel)]="song.album" type="text" placeholder=" {{song.album}}">
+          </mat-form-field>
+    <br />
+        <mat-form-field appearance="fill">
         <mat-label>Year</mat-label>
-        <input matInput [(ngModel)]="song.year" type="text" placeholder=" {{song.year}}">        
-    <br />        
+        <input matInput [(ngModel)]="song.year" type="text" placeholder=" {{song.year}}">
+        </mat-form-field>
+    <br />
+        <mat-form-field appearance="fill">
           <mat-label>Duration</mat-label>
-          <input matInput [(ngModel)]="song.time" type="text" placeholder=" {{song.time}}">        
+          <input matInput [(ngModel)]="song.time" type="text" placeholder=" {{song.time}}">
+        </mat-form-field>
+
   </mat-card-content>
 
 </mat-card>

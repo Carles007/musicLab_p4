@@ -83,36 +83,32 @@
         </div>
         <div class="example-button-container">
           <button mat-fab color="primary" (click)="nextSound()">
+            <mat-icon>skip_previous</mat-icon>
+          </button>
+        </div> 
+        <div class="example-button-container">
+          <button mat-fab color="primary" (click)="previousSound()">
             <mat-icon>skip_next</mat-icon>
           </button>
-          <div class="example-button-container">
-            <button mat-fab color="primary" (click)="previousSound()">
-              <mat-icon>skip_previous</mat-icon>
-            </button>
         </div> 
 
       </div>
     </div>
   </div>
-
-  
-
   <div class="row">
     <div class="col-8" style="text-align: left">
-      {{ secondsToString(audio.duration - audio.currentTime) }}
+      {{ secondsToString(audio.currentTime) }}
     </div>
-    <div class="col-2" style="text-align: right">
+    <div class="col-4" style="text-align: right">
       {{ secondsToString(audio.duration) }}
     </div>
   </div>
-     
+
   <div class="row">
 
     <div class="row">
       <div class="col-10">
-        <!-- <mat-slider type="range" min="0" max="{{ audio.duration }}" [(ngModel)]="audio.currentTime" step="10" style="width: 100%"> -->
-          <mat-slider type="range" min="0" max="{{ audio.duration }}" [(ngModel)]="audio.currentTime" step="10" style="width: 100%">
-
+        <mat-slider type="range" min="0" max="{{ audio.duration }}" [(ngModel)]="audio.currentTime" step="10" style="width: 100%">
         </mat-slider>      
       </div>      
       
@@ -131,6 +127,7 @@
 
     
     <div class="col-2">
+      </div>
 
       
       <!-- <i
@@ -142,32 +139,25 @@
         *ngIf="showVolume"
         type="range"
         min="0"
-        max="1"
-        [(ngModel)]="audio.volume"
-        step="0.1"
-        id="mislider"
-      /> -->
+        max="{{ audio.duration }}"
+        [(ngModel)]="audio.currentTime"
+        step="10"
+        style="width: 100%"
+      >
+      </mat-slider>
     </div>
-
-    
-  <div class="row">
-    <div class="col-12" >
-      <mat-icon color="primary" class="icon-2x">favorite</mat-icon>
-      <mat-icon color="primary" class="icon-2x"[ngClass]="repeat ? 'bi-repeat-1' : 'bi-arrow-repeat'">repeat</mat-icon>
-      <mat-icon color="primary" class="icon-2x">video_library</mat-icon>
-      <mat-icon color="primary" class="icon-2x">chat_bubble</mat-icon>
-      <mat-icon color="primary" class="icon-2x" (click)="deleteSound()">delete</mat-icon>
-    </div> 
   </div>
-  
-<!-- <div class="row">
-  <div class="col-3"></div>
-  <div class="col-8">
-    <i class="bi bi-heart" style="font-size: 30px; color: rgb(255, 0, 0)"></i>
-    <i class="bi" [ngClass]="repeat ? 'bi-repeat-1' : 'bi-arrow-repeat'" style="font-size: 30px; color: rgb(0, 184, 98)" (click)="repeat = !repeat" ></i>
-    <i class="bi bi-camera-reels" style="font-size: 30px; color: rgb(97, 193, 238)"></i>
-    <i class="bi bi-chat" style="font-size: 30px; color: rgb(253, 181, 27)"></i>
-    <i class="bi bi-trash" style="font-size: 30px; color: rgb(0, 0, 0)" (click)="deleteSound()"></i>
-  </div> 
-
-</div> -->
+  <div class="col-12">
+    <mat-icon color="primary">volume_up</mat-icon>
+    <mat-slider
+      type="range"
+      min="0"
+      max="1"
+      step="0.1"
+      id="mislider"
+      [(ngModel)]="volumenSelected"
+    >
+    </mat-slider>
+  </div>
+</div>
+-->
