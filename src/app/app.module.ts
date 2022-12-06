@@ -22,6 +22,8 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 
@@ -53,6 +55,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatCardModule,
     MatInputModule,
     MatSelectModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
