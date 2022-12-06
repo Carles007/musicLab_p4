@@ -47,11 +47,13 @@
   </div>
 
   -->
-<div class="container">
+<div class="container-list">
+  
   <div class="row">
     <div class="col-12">
       <div class="example-button-row">
-        <div class="example-flex-container">
+        <div class="box">
+          
             <button mat-fab color="primary" (click)="previousSound()">
               <mat-icon>skip_previous</mat-icon>
             </button>
@@ -104,5 +106,12 @@
       [(ngModel)]="volumenSelected"
     >
     </mat-slider>
+    
   </div>
+  <div class="row">
+    <div class="col-12">
+    <mat-icon color="primary">favorite</mat-icon>
+    <mat-icon color="primary" [ngClass]="repeat ? 'bi-repeat-1' : 'bi-arrow-repeat'">repeat</mat-icon>
+    <mat-icon color="primary" (click)="deleteSound()">delete</mat-icon>
+  </div></div>
 </div>

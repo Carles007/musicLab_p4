@@ -15,10 +15,12 @@ export class MusicControlComponent implements OnInit {
   showVolume: boolean = false;
   // volume: number=0.5;
   currentSong: Song | undefined;
-  volumenSelected:number =0.1;
+  volumenSelected: number = 0.1;
   progress = 0;
 
   @Output() deleteEvent = new EventEmitter<Song>();
+  @Output() plusEvent = new EventEmitter<Song>();
+
   @Output() nextEvent = new EventEmitter();
   @Output() prevEvent = new EventEmitter();
 
@@ -36,7 +38,7 @@ export class MusicControlComponent implements OnInit {
   }
 
   playSound() {
-    console.log("play sound", this.audio.duration);
+    console.log('play sound', this.audio.duration);
     console.log(this.currentSong);
 
     this.audio.play();
@@ -45,17 +47,13 @@ export class MusicControlComponent implements OnInit {
   }
 
   pauseSound() {
-
     this.audio.pause();
     this.playing = false;
-
   }
   stopSound() {
-
     this.audio.pause();
     this.audio.currentTime = 0;
     this.playing = false;
-
   }
   previousSound() {
     this.stopSound();
@@ -86,15 +84,20 @@ export class MusicControlComponent implements OnInit {
       this.deleteEvent.emit(this.currentSong);
     }
   }
+  plusSound() {
+    if (confirm('Are you sure you want to add a new song?')) {
+      this.stopSound();
+      this.plusEvent.emit(this.currentSong);
+    }
+  }
 
   updateProgress() {
     this.audio.volume = this.volumenSelected;
     this.progress = (this.audio.currentTime / this.audio.duration) * 100 || 0;
-    
+
     setTimeout(() => {
       this.updateProgress();
     }, 1000);
-    
 
     if (this.progress == 100) {
       this.stopSound();
