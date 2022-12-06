@@ -2,7 +2,8 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Song } from '../song';
 import { Songs } from '../mock-songs';
 import { FilterPipe } from '../pipes/filter.pipe';
-
+import {PageEvent} from '@angular/material/paginator';
+import { SongService } from '../services/song.service';
 
 @Component({
   selector: 'app-lista-canciones',
@@ -11,30 +12,31 @@ import { FilterPipe } from '../pipes/filter.pipe';
 })
 export class ListaCancionesComponent implements OnInit {
 
-  songObj = new Songs();
   selectedSong?: Song;
 
-  songList: Song[] = this.songObj.SONGS;
+  songList: Song[] = [];
 
   sortBy: string = "name";
   filterSong = '';
   filterSong1 = '';
   filterSong2 = '';
 
+  pageEvent: PageEvent = new PageEvent;
+  length: number = 0;
+  pageSize: number = 10;
+  pageIndex: number = 0;
+ 
+
   @Input() song?: Song;
-
-
-
   @Output() songEvent = new EventEmitter<Song>();
+
  
- 
-  constructor() { }
+  constructor(private songService: SongService) { }
 
-  
-
-  ngOnInit(): void { }
-
-
+  ngOnInit(): void {
+    this.songList = this.songService.getSongs(this.pageSize, this.pageIndex*this.pageSize);
+    this.length = this.songService.getLength();
+  }
 
   onSelect(song: Song): void {
     this.selectedSong = song;
@@ -60,5 +62,13 @@ export class ListaCancionesComponent implements OnInit {
     const currentIndex = this.songList.findIndex(s => s == this.selectedSong);
     const prevIndex = Math.max(currentIndex - 1, 0);
     this.onSelect(this.songList[prevIndex]);
+  }
+  
+  handlePageEvent(e: PageEvent) {
+    this.pageEvent = e;
+    this.pageSize = e.pageSize;
+    this.pageIndex = e.pageIndex;
+
+    this.songList = this.songService.getSongs(this.pageSize, this.pageIndex*this.pageSize);
   }
 }

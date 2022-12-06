@@ -11,6 +11,9 @@
   box-shadow: 0px 0px 10px;
   border-radius: 15px;
 }
+.container-list.filters {
+  background-color: #fff;
+}
 
 .container-item {
   display: flex;
