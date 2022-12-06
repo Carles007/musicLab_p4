@@ -22,6 +22,8 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 import { ReactiveFormsModule } from '@angular/forms';
 
 
@@ -55,6 +57,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatCardModule,
     MatInputModule,
     MatSelectModule,
+    MatPaginatorModule,
     ReactiveFormsModule
   ],
   providers: [],
