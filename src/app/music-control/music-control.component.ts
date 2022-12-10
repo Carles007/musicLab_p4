@@ -1,7 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+
 import { ListaCancionesComponent } from '../lista-canciones/lista-canciones.component';
 import { Song } from '../song';
+
 
 @Component({
   selector: 'app-music-control',
@@ -18,15 +20,20 @@ export class MusicControlComponent implements OnInit {
   volumenSelected: number = 0.1;
   progress = 0;
 
+
   @Output() deleteEvent = new EventEmitter<Song>();
   @Output() plusEvent = new EventEmitter<Song>();
 
   @Output() nextEvent = new EventEmitter();
   @Output() prevEvent = new EventEmitter();
 
-  constructor() {}
+  constructor() {
+    
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+   
+  }
 
   @Input() set song(src: Song) {
     this.currentSong = src;
@@ -79,6 +86,7 @@ export class MusicControlComponent implements OnInit {
     audio.loop = false;
   }
   deleteSound() {
+
     if (confirm('Are you sure you want to delete this song?')) {
       this.stopSound();
       this.deleteEvent.emit(this.currentSong);

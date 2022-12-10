@@ -4,6 +4,8 @@ import { Songs } from '../mock-songs';
 import { FilterPipe } from '../pipes/filter.pipe';
 import {PageEvent} from '@angular/material/paginator';
 import { SongService } from '../services/song.service';
+import { CrudService } from '../song/crud.service';
+
 
 @Component({
   selector: 'app-lista-canciones',
@@ -11,6 +13,8 @@ import { SongService } from '../services/song.service';
   styleUrls: ['./lista-canciones.component.css']
 })
 export class ListaCancionesComponent implements OnInit {
+
+  cancionesBDD: Song[] = [];
 
   selectedSong?: Song;
 
@@ -31,11 +35,16 @@ export class ListaCancionesComponent implements OnInit {
   @Output() songEvent = new EventEmitter<Song>();
 
  
-  constructor(private songService: SongService) { }
+  constructor(private songService: SongService,public crudApi:CrudService) { }
 
   ngOnInit(): void {
     this.songList = this.songService.getSongs(this.pageSize, this.pageIndex*this.pageSize);
     this.length = this.songService.getLength();
+
+    this.crudApi.createSong(this.songList[0]);
+
+    
+    console.log(this.crudApi.getSongs());
   }
 
   onSelect(song: Song): void {

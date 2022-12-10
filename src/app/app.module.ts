@@ -26,6 +26,16 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 
 import { ReactiveFormsModule } from '@angular/forms';
 
+import {HttpClientModule } from'@angular/common/http';
+// Import Firebase modules + environment
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { environment } from '../environments/environment';
+import { CrudService } from './song/crud.service';
+
 
 
 
@@ -58,9 +68,19 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatSelectModule,
     MatPaginatorModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    HttpClientModule,
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+
+  
+  bootstrap: [AppComponent],
+  providers: [CrudService],
 })
 export class AppModule { }
+
