@@ -7,18 +7,24 @@ import { AngularFirestore} from '@angular/fire/compat/firestore';
 export class CrudService {
   cancionesBDD: Song[] = [];
 
+ // songsRef!: AngularFireList<any[]>;
+ //   songRef!: AngularFireObject<any>;
     constructor(private angularFirestore: AngularFirestore) {}
+    // Create Student
+   /* AddStudent(song: Song) {
+      console.log("hola");
+
+      this.songsRef.push({
+      id: song.id,
+    name: song.name,
+ 
+    });
+    }*/
 
     getSongs(){
 
-        this.angularFirestore.collection('canciones')
-        .valueChanges()
-        .subscribe(docs => {
-
-          docs.forEach(doc => (console.log(doc)
-          )); 
-          return this.cancionesBDD=docs as Song[]
-        });
+      return this.angularFirestore.collection('canciones').snapshotChanges();
+     
     }
 
     createSong(song: Song){

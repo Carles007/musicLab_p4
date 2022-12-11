@@ -41,10 +41,21 @@ export class ListaCancionesComponent implements OnInit {
     this.songList = this.songService.getSongs(this.pageSize, this.pageIndex*this.pageSize);
     this.length = this.songService.getLength();
 
-    this.crudApi.createSong(this.songList[0]);
 
-    
-    console.log(this.crudApi.getSongs());
+    //poner esta funcion donde se añadan la canciones. Esto es un ejemplo 
+    //this.crudApi.createSong(this.songList[1]);
+
+    this.crudApi.getSongs().subscribe(data => {
+      this.cancionesBDD = data.map(e => {
+        return {
+          id: e.payload.doc.id,
+          ...e.payload.doc.data() as Song
+        };
+      })
+      console.log(this.cancionesBDD)
+    });
+
+
   }
 
   onSelect(song: Song): void {

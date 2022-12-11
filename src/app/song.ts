@@ -3,7 +3,7 @@ import { Time } from "@angular/common";
 export class Song {
 
   constructor(
-    public id: number,
+    public idSong: number,
     public name: string,
     public artist: string,
     public album: string,
