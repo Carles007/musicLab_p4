@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Song } from '../song';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { debounceTime } from 'rxjs/operators';
+import { SongsService } from '../services/songs.service';
 
 @Component({
   selector: 'app-song-detail',
@@ -10,20 +11,29 @@ import { debounceTime } from 'rxjs/operators';
   styleUrls: ['./song-detail.component.css']
 })
 export class SongDetailComponent implements OnInit {
+  formulario: FormGroup;
 
-
-  nameCtrl = new FormControl('',[Validators.required]);
-  artistCtrl = new FormControl('',[Validators.required]);
-  albumCtrl = new FormControl('',[Validators.required]);
-  yearCtrl = new FormControl('',[Validators.required]);
-  timeCtrl = new FormControl('',[Validators.required]);
 
   @Input() song?: Song;
 
+  /* nameCtrl = null;
+  artistCtrl = new FormControl('',[Validators.required]);
+  albumCtrl = new FormControl('',[Validators.required]);
+  yearCtrl = new FormControl('',[Validators.required]);
+  timeCtrl = new FormControl('',[Validators.required]);  */
 
-  constructor() {
+  constructor(private songsService: SongsService) {
 
-    this.nameCtrl.valueChanges
+
+    this.formulario = new FormGroup({
+      name : new FormControl('',[Validators.required]),
+      artist : new FormControl('',[Validators.required]),
+      album : new FormControl('',[Validators.required]),
+      year : new FormControl('',[Validators.required]),
+      time : new FormControl('',[Validators.required]),
+      
+      })
+/*    this.nameCtrl.valueChanges
     .pipe(
       debounceTime(500)
     )
@@ -61,18 +71,31 @@ export class SongDetailComponent implements OnInit {
     )
     .subscribe(value =>{
       console.log(value)
-    })
+    }) */
+    
 
    }
 
+  async onSubmit(){
+    console.log(this.formulario.value);
+    const response = await this.songsService.addSong(this.formulario.value);
+    console.log(response);
+  }
   ngOnInit(): void {
+    this.songsService.getSongs().subscribe(songs => {console.log(songs)})
+ 
   }
 
+  uploadSong($event: any){
+    const file = $event.target.files[0];
+    console.log(file);
+
+  }
 
   //Para furura implementacion del boton guardar.
 
-
-/*   getName(event: Event){
+/* 
+  getName(event: Event){
     event.preventDefault();
     console.log(this.nameCtrl.value);
   }
