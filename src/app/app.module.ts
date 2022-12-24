@@ -35,6 +35,9 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
 import { CrudService } from './song/crud.service';
+import { initializeApp } from 'firebase/app';
+import { getStorage,provideStorage } from '@angular/fire/storage';
+import { provideFirebaseApp } from '@angular/fire/app';
 
 
 
@@ -76,6 +79,9 @@ import { CrudService } from './song/crud.service';
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
+    provideFirebaseApp( ()=> initializeApp(environment.firebase)),
+    provideStorage( ()=>getStorage())
+ 
   ],
 
   

@@ -41,10 +41,10 @@ export class ListaCancionesComponent implements OnInit {
     this.songList = this.songService.getSongs(this.pageSize, this.pageIndex*this.pageSize);
     this.length = this.songService.getLength();
 
-
+    this.crudApi.getImagesStorage();
     //poner esta funcion donde se añadan la canciones. Esto es un ejemplo 
     //this.crudApi.createSong(this.songList[1]);
-
+/*
     this.crudApi.getSongs().subscribe(data => {
       this.cancionesBDD = data.map(e => {
         return {
@@ -54,7 +54,7 @@ export class ListaCancionesComponent implements OnInit {
       })
       console.log(this.cancionesBDD)
     });
-
+*/
 
   }
 
