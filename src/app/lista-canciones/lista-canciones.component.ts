@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Song } from '../song';
-import { Songs } from '../mock-songs';
+//import { Songs } from '../mock-songs';
 import { FilterPipe } from '../pipes/filter.pipe';
 import {PageEvent} from '@angular/material/paginator';
 import { SongService } from '../services/song.service';
@@ -38,13 +38,7 @@ export class ListaCancionesComponent implements OnInit {
   constructor(private songService: SongService,public crudApi:CrudService) { }
 
   ngOnInit(): void {
-    this.songList = this.songService.getSongs(this.pageSize, this.pageIndex*this.pageSize);
-    this.length = this.songService.getLength();
 
-    this.crudApi.getImagesStorage();
-    //poner esta funcion donde se añadan la canciones. Esto es un ejemplo 
-    //this.crudApi.createSong(this.songList[1]);
-/*
     this.crudApi.getSongs().subscribe(data => {
       this.cancionesBDD = data.map(e => {
         return {
@@ -53,8 +47,17 @@ export class ListaCancionesComponent implements OnInit {
         };
       })
       console.log(this.cancionesBDD)
+      this.songList=this.cancionesBDD;
     });
-*/
+
+    //this.songList = this.songService.getSongs(this.pageSize, this.pageIndex*this.pageSize);
+    this.length = this.songService.getLength();
+
+//    this.crudApi.getImagesStorage();
+    //poner esta funcion donde se añadan la canciones. Esto es un ejemplo 
+    //this.crudApi.createSong(this.songList[1]);
+
+
 
   }
 
