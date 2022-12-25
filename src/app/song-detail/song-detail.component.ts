@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Song } from '../song';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { Storage, ref, uploadBytes} from '@angular/fire/storage';
 import { debounceTime } from 'rxjs/operators';
 import { SongsService } from '../services/songs.service';
 
@@ -22,7 +22,7 @@ export class SongDetailComponent implements OnInit {
   yearCtrl = new FormControl('',[Validators.required]);
   timeCtrl = new FormControl('',[Validators.required]);  */
 
-  constructor(private songsService: SongsService) {
+  constructor(private songsService: SongsService, private storage: Storage) {
 
 
     this.formulario = new FormGroup({
@@ -86,11 +86,11 @@ export class SongDetailComponent implements OnInit {
  
   }
 
-  uploadSong($event: any){
-    const file = $event.target.files[0];
-    console.log(file);
-
+  upload($event: any){
+   this.songsService.uploadSong($event, this.formulario.value );
   }
+
+ 
 
   //Para furura implementacion del boton guardar.
 

@@ -23,6 +23,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
@@ -63,6 +64,7 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     MatSelectModule,
     MatPaginatorModule,
     ReactiveFormsModule,
+    MaterialFileInputModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage())
