@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, addDoc, collectionData } from '@angular/fire/firestore';
+import { Firestore, addDoc, collectionData, setDoc, doc } from '@angular/fire/firestore';
 import { collection } from '@firebase/firestore';
 import { Observable } from 'rxjs';
 import { Song } from '../song';
@@ -20,5 +20,18 @@ export class SongsService {
     const songRef = collection(this.firestore,'songs');
     return collectionData(songRef,{idField: 'id'}) as Observable<Song[]>;
 
+  }
+
+  updateSong(song: Song){
+    
+    const songRef = doc(this.firestore,'songs',`${song.id}`);
+    return setDoc(songRef, {
+      name: song.name,
+      artist: song.artist,
+      album: song.album,
+      year: song.year,
+      time: song.time
+   },
+   { merge: true });
   }
 }

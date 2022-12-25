@@ -56,6 +56,17 @@
           [(ngModel)]="song.time"
           type="text"
           >
+    <br />
+         <!--  <small *ngIf="timeCtrl.hasError('required') && timeCtrl.dirty">This field is required</small> -->
+        </mat-form-field>
+        <mat-form-field class="invisible example-full-width">
+          <mat-label>ID</mat-label>
+          <input matInput
+          formControlName="id"
+          [(ngModel)]="song.id"
+          type="text"
+          
+          >
          <!--  <small *ngIf="timeCtrl.hasError('required') && timeCtrl.dirty">This field is required</small> -->
         </mat-form-field>
        </mat-card-content>

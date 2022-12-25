@@ -31,7 +31,7 @@ export class SongDetailComponent implements OnInit {
       album : new FormControl('',[Validators.required]),
       year : new FormControl('',[Validators.required]),
       time : new FormControl('',[Validators.required]),
-      
+      id: new FormControl('',[Validators.required]),
       })
 /*    this.nameCtrl.valueChanges
     .pipe(
@@ -77,8 +77,8 @@ export class SongDetailComponent implements OnInit {
    }
 
   async onSubmit(){
-    console.log(this.formulario.value);
-    const response = await this.songsService.addSong(this.formulario.value);
+    console.log(this.formulario.value.id);
+    const response = await this.songsService.updateSong(this.formulario.value);
     console.log(response);
   }
   ngOnInit(): void {
