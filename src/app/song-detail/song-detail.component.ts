@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Storage, ref, uploadBytes} from '@angular/fire/storage';
 import { debounceTime } from 'rxjs/operators';
 import { SongsService } from '../services/songs.service';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @Component({
   selector: 'app-song-detail',
@@ -12,7 +13,8 @@ import { SongsService } from '../services/songs.service';
 })
 export class SongDetailComponent implements OnInit {
   formulario: FormGroup;
-
+  file1?: File | null ; // Variable to store file
+  file2?: File | null ; // Variable to store file
 
   @Input() song?: Song;
 
@@ -72,29 +74,49 @@ export class SongDetailComponent implements OnInit {
     .subscribe(value =>{
       console.log(value)
     }) */
-    
+
 
    }
-
-  async onSubmit(){
+   async onSubmitSave(){
     console.log(this.formulario.value.id);
     const response = await this.songsService.updateSong(this.formulario.value);
     console.log(response);
+
+
+
+
+  }
+
+  async onSubmit(){
+    /* console.log(this.formulario.value.id);
+    const response = await this.songsService.updateSong(this.formulario.value);
+    console.log(response); */
+
+    this.songsService.uploadSong(this.file1, this.file2, this.formulario.value );
+
+
   }
   ngOnInit(): void {
     this.songsService.getSongs().subscribe(songs => {console.log(songs)})
- 
+
+  }
+    // On file Select
+  onChange1($event: any) {
+      this.file1= $event;
   }
 
-  upload($event: any){
-   this.songsService.uploadSong($event, this.formulario.value );
-  }
+  onChange2($event: any) {
+    this.file2= $event;
+}
+ /*  upload(file: File){
+    this.songsService.uploadSong(file, this.formulario.value );
+  } */
 
- 
+
 
   //Para furura implementacion del boton guardar.
 
-/* 
+/*
   getName(event: Event){
     event.preventDefault();
     console.log(this.nameCtrl.value);

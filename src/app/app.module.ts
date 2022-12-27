@@ -24,6 +24,8 @@ import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
+import { MatTabsModule } from '@angular/material/tabs';
+
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
@@ -64,6 +66,7 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     MatSelectModule,
     MatPaginatorModule,
     ReactiveFormsModule,
+    MatTabsModule,
     MaterialFileInputModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
