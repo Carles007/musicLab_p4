@@ -33,6 +33,9 @@ export class SongDetailComponent implements OnInit {
       year : new FormControl('',[Validators.required]),
       time : new FormControl('',[Validators.required]),
       id: new FormControl('',[Validators.required]),
+      url: new FormControl('',[Validators.required]),
+      imagen: new FormControl('',[Validators.required]),
+
       })
 /*    this.nameCtrl.valueChanges
     .pipe(
@@ -96,8 +99,13 @@ export class SongDetailComponent implements OnInit {
     this.formulario.value.artist= "NewSong";
     this.formulario.value.album= "NewSong";
     this.formulario.value.year= 0;
-    this.formulario.value.year= 0;
+
     this.songsService.uploadSong($event,this.formulario.value);
+  }
+
+  uploadImage($event: any){
+
+    this.songsService.updateImage($event,this.formulario.value);
   }
 
   toggleData() {

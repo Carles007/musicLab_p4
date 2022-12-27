@@ -33,9 +33,44 @@ export class SongsService {
       artist: song.artist,
       album: song.album,
       year: song.year,
-      time: song.time
+      time: song.time,
+      
    },
    { merge: true });
+  }
+
+  updateImage($event: any, song: Song){
+
+    const songRefUpadated = doc(this.firestore,'canciones',`${song.id}`);
+   
+    const file = $event.target.files[0];
+    console.log(file);
+
+    const songRef= ref(this.storage,`img/${file.name}` );
+    
+    uploadBytes(songRef, file)
+    .then(async response => {
+
+      console.log(response);
+
+      const downloadURL = await getDownloadURL(ref(songRef));
+
+      console.log(downloadURL);
+
+      const songReffirestore = collection(this.firestore,'canciones');
+      
+      return setDoc(songRefUpadated, {
+        name: song.name,
+        artist: song.artist,
+        album: song.album,
+        year: song.year,
+        time: song.time,
+        imagen: downloadURL
+     },
+     { merge: true });
+    })
+
+    
   }
 
   uploadSong($event: any, song: Song){
