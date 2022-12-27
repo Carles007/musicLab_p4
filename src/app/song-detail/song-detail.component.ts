@@ -99,12 +99,12 @@ export class SongDetailComponent implements OnInit {
     this.formulario.value.artist= "NewSong";
     this.formulario.value.album= "NewSong";
     this.formulario.value.year= 0;
-
+    this.toDisplay=false;
     this.songsService.uploadSong($event,this.formulario.value);
   }
 
   uploadImage($event: any){
-
+    this.toDisplay=false;
     this.songsService.updateImage($event,this.formulario.value);
   }
 

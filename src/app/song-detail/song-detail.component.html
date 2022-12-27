@@ -77,6 +77,7 @@
         <ngx-mat-file-input #removableInput formControlName="acceptfile" placeholder="jpg" [accept]="'.jpg'"(change)="uploadImage($event)"></ngx-mat-file-input>
         <button mat-icon-button matSuffix *ngIf="!removableInput.empty" (click)="removableInput.clear($event)">
           <mat-icon matSuffix>folder</mat-icon>
+          <mat-icon>clear</mat-icon>
         </button>
       </mat-form-field>
       <p></p>
@@ -93,6 +94,7 @@
       <ngx-mat-file-input #removableInput formControlName="acceptfile" placeholder="Mp3 file only" [accept]="'.mp3'" (change)="uploadOnlySong($event)"></ngx-mat-file-input>
       <button mat-icon-button matSuffix *ngIf="!removableInput.empty" (click)="removableInput.clear($event)">
         <mat-icon matSuffix>folder</mat-icon>
+        <mat-icon>clear</mat-icon>
       </button>
     </mat-form-field>
    <!--  <input class="ng-hide" id="input-file-id"  type="file" (change)="upload($event)"/> -->
