@@ -15,19 +15,19 @@ export class SongsService {
   constructor(private firestore: Firestore,private storage: Storage) { }
  
   addSong(song: Song){
-    const songRef = collection(this.firestore,'songs');
+    const songRef = collection(this.firestore,'canciones');
     return addDoc(songRef, song);
   }
 
   getSongs(): Observable<Song[]>{
-    const songRef = collection(this.firestore,'songs');
+    const songRef = collection(this.firestore,'canciones');
     return collectionData(songRef,{idField: 'id'}) as Observable<Song[]>;
 
   }
 
   updateSong(song: Song){
     
-    const songRef = doc(this.firestore,'songs',`${song.id}`);
+    const songRef = doc(this.firestore,'canciones',`${song.id}`);
     return setDoc(songRef, {
       name: song.name,
       artist: song.artist,
@@ -55,7 +55,7 @@ export class SongsService {
 
       console.log(downloadURL);
 
-      const songReffirestore = collection(this.firestore,'songs');
+      const songReffirestore = collection(this.firestore,'canciones');
       
       return addDoc(songReffirestore, {
         name: song.name,

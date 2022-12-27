@@ -3,17 +3,18 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  firebase: {
-    projectId: 'musiclab-2b35b',
-    appId: '1:580209855152:web:d400e0df93b062a7928975',
-    storageBucket: 'musiclab-2b35b.appspot.com',
-    locationId: 'europe-west3',
-    apiKey: 'AIzaSyBPiazV7teO9BXfx_jcTMy6dzSOtXgJG3c',
-    authDomain: 'musiclab-2b35b.firebaseapp.com',
-    messagingSenderId: '580209855152',
-  },
-  production: false
+  production: false,
+  // Your web app's Firebase configuration
+  firebase : {
+  apiKey: "AIzaSyBmgPh8Pl-CIBARwUBFa_Mw9a4IKYt6N6M",
+  authDomain: "p4hybrid-b3094.firebaseapp.com",
+  projectId: "p4hybrid-b3094",
+  storageBucket: "p4hybrid-b3094.appspot.com",
+  messagingSenderId: "352910118356",
+  appId: "1:352910118356:web:ec8d2670957a2a38111a41"
+}
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file

@@ -12,6 +12,7 @@ import { SongsService } from '../services/songs.service';
 })
 export class SongDetailComponent implements OnInit {
   formulario: FormGroup;
+  toDisplay = false;
 
 
   @Input() song?: Song;
@@ -90,6 +91,22 @@ export class SongDetailComponent implements OnInit {
    this.songsService.uploadSong($event, this.formulario.value );
   }
 
+  uploadOnlySong($event: any){
+    this.formulario.value.name= "NewSong";
+    this.formulario.value.artist= "NewSong";
+    this.formulario.value.album= "NewSong";
+    this.formulario.value.year= 0;
+    this.formulario.value.year= 0;
+    this.songsService.uploadSong($event,this.formulario.value);
+  }
+
+  toggleData() {
+    
+    if(this.toDisplay==false)
+    this.toDisplay = true;
+    else
+    this.toDisplay=false;
+  }
  
 
   //Para furura implementacion del boton guardar.
