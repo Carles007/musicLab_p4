@@ -7,7 +7,7 @@
     <mat-card-subtitle>Artist: {{song.artist}}</mat-card-subtitle>
   </mat-card-header>
   <img img mat-card-md-image src="{{song.imagen}}" alt="Photo of the song album">
-  <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+  <form [formGroup]="formulario" (ngSubmit)="onSubmitSave()">
   <mat-card-content>
 
         <mat-form-field appearance="fill">
@@ -158,7 +158,7 @@
          <!--  <small *ngIf="timeCtrl.hasError('required') && timeCtrl.dirty">This field is required</small> -->
         </mat-form-field>
         <mat-form-field style="text-align: left;">
-          <ngx-mat-file-input #removableInput placeholder="img file only" (change)="onChange2($event)"></ngx-mat-file-input>
+          <ngx-mat-file-input #removableInput placeholder="img file only" [accept]="'.png, .jpg, .jpeg'" (change)="onChange2($event)"></ngx-mat-file-input>
           <button mat-icon-button matSuffix *ngIf="!removableInput.empty" (click)="removableInput.clear($event)">
             <mat-icon matSuffix>folder</mat-icon>
             <mat-icon>clear</mat-icon>
