@@ -1,66 +1,193 @@
 <mat-card  *ngIf="song" class="container-list">
+  <mat-tab-group>
+    <mat-tab label="Current Song">
   <mat-card-header>
     <img src="{{song.imagen}}"  mat-card-avatar />
     <mat-card-title>Name: {{song.name}}</mat-card-title>
     <mat-card-subtitle>Artist: {{song.artist}}</mat-card-subtitle>
   </mat-card-header>
   <img img mat-card-md-image src="{{song.imagen}}" alt="Photo of the song album">
+  <form [formGroup]="formulario" (ngSubmit)="onSubmitSave()">
   <mat-card-content>
 
         <mat-form-field appearance="fill">
         <mat-label>Name</mat-label>
           <input matInput
-          [formControl]="nameCtrl"
+          formControlName="name"
           [(ngModel)]="song.name"
           type="text"
           >
-          <small *ngIf="nameCtrl.hasError('required') && nameCtrl.dirty">This field is required</small>
+          <!-- <small *ngIf="nameCtrl.hasError('required') && nameCtrl.dirty">This field is required</small> -->
         </mat-form-field>
 
     <br />
         <mat-form-field appearance="fill">
         <mat-label>Artist</mat-label>
           <input matInput
-          [formControl]="artistCtrl"
+          formControlName="artist"
           [(ngModel)]="song.artist"
           type="text"
           >
-          <small *ngIf="artistCtrl.hasError('required') && artistCtrl.dirty">This field is required</small>
+         <!--  <small *ngIf="artistCtrl.hasError('required') && artistCtrl.dirty">This field is required</small> -->
         </mat-form-field>
     <br />
         <mat-form-field appearance="fill">
           <mat-label>Album</mat-label>
           <input matInput
-          [formControl]="artistCtrl"
+          formControlName="album"
           [(ngModel)]="song.album"
           type="text"
           >
-          <small *ngIf="albumCtrl.hasError('required') && albumCtrl.dirty">This field is required</small>
+         <!--  <small *ngIf="albumCtrl.hasError('required') && albumCtrl.dirty">This field is required</small> -->
           </mat-form-field>
     <br />
         <mat-form-field appearance="fill">
         <mat-label>Year</mat-label>
           <input matInput
-          [formControl]="yearCtrl"
+          formControlName="year"
           [(ngModel)]="song.year"
           type="text"
           >
-          <small *ngIf="yearCtrl.hasError('required') && yearCtrl.dirty">This field is required</small>
+          <!-- <small *ngIf="yearCtrl.hasError('required') && yearCtrl.dirty">This field is required</small> -->
         </mat-form-field>
     <br />
         <mat-form-field appearance="fill">
           <mat-label>Duration</mat-label>
           <input matInput
-          [formControl]="timeCtrl"
+          formControlName="time"
           [(ngModel)]="song.time"
           type="text"
           >
-          <small *ngIf="timeCtrl.hasError('required') && timeCtrl.dirty">This field is required</small>
+    <br />
+         <!--  <small *ngIf="timeCtrl.hasError('required') && timeCtrl.dirty">This field is required</small> -->
+        </mat-form-field>
+        <mat-form-field class="invisible example-full-width">
+          <mat-label>ID</mat-label>
+          <input matInput
+          formControlName="id"
+          [(ngModel)]="song.id"
+          type="text"
+
+          >
+         <!--  <small *ngIf="timeCtrl.hasError('required') && timeCtrl.dirty">This field is required</small> -->
+        </mat-form-field>
+       </mat-card-content>
+  <mat-card-actions>
+
+      <button mat-raised-button color="primary" type="submit">SAVE</button>
+
+    <!-- <input class="ng-hide" id="input-file-id" multiple type="file" (change)="uploadSong($event)"/>
+    <label for="input-file-id" class="md-button md-raised md-primary"></label> -->
+    <!-- <mat-form-field style="text-align: left;">
+      <ngx-mat-file-input #removableInput formControlName="acceptfile" placeholder="Mp3 file only" [accept]="'.mp3'" (change)="upload($event)"></ngx-mat-file-input>
+      <button mat-icon-button matSuffix *ngIf="!removableInput.empty" (click)="removableInput.clear($event)">
+        <mat-icon matSuffix>folder</mat-icon>
+        <mat-icon>clear</mat-icon>
+      </button>
+    </mat-form-field> -->
+   <!--  <input class="ng-hide" id="input-file-id"  type="file" (change)="upload($event)"/> -->
+
+  </mat-card-actions>
+</form>
+</mat-tab>
+
+<mat-tab label="New Song">
+
+  <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+  <mat-card-content>
+
+        <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+          <input matInput
+          formControlName="name"
+          [(ngModel)]="song.name"
+          type="text"
+          >
+          <!-- <small *ngIf="nameCtrl.hasError('required') && nameCtrl.dirty">This field is required</small> -->
         </mat-form-field>
 
-  </mat-card-content>
+    <br />
+        <mat-form-field appearance="fill">
+        <mat-label>Artist</mat-label>
+          <input matInput
+          formControlName="artist"
+          [(ngModel)]="song.artist"
+          type="text"
+          >
+         <!--  <small *ngIf="artistCtrl.hasError('required') && artistCtrl.dirty">This field is required</small> -->
+        </mat-form-field>
+    <br />
+        <mat-form-field appearance="fill">
+          <mat-label>Album</mat-label>
+          <input matInput
+          formControlName="album"
+          [(ngModel)]="song.album"
+          type="text"
+          >
+         <!--  <small *ngIf="albumCtrl.hasError('required') && albumCtrl.dirty">This field is required</small> -->
+          </mat-form-field>
+    <br />
+        <mat-form-field appearance="fill">
+        <mat-label>Year</mat-label>
+          <input matInput
+          formControlName="year"
+          [(ngModel)]="song.year"
+          type="text"
+          >
+          <!-- <small *ngIf="yearCtrl.hasError('required') && yearCtrl.dirty">This field is required</small> -->
+        </mat-form-field>
+    <br />
+        <mat-form-field appearance="fill">
+          <mat-label>Duration</mat-label>
+          <input matInput
+          formControlName="time"
+          [(ngModel)]="song.time"
+          type="text"
+          >
+    <br />
+         <!--  <small *ngIf="timeCtrl.hasError('required') && timeCtrl.dirty">This field is required</small> -->
+        </mat-form-field>
+        <mat-form-field class="invisible example-full-width">
+          <mat-label>ID</mat-label>
+          <input matInput
+          formControlName="id"
+          [(ngModel)]="song.id"
+          type="text"
+
+          >
+         <!--  <small *ngIf="timeCtrl.hasError('required') && timeCtrl.dirty">This field is required</small> -->
+        </mat-form-field>
+        <mat-form-field style="text-align: left;">
+          <ngx-mat-file-input #removableInput placeholder="img file only" [accept]="'.png, .jpg, .jpeg'" (change)="onChange2($event)"></ngx-mat-file-input>
+          <button mat-icon-button matSuffix *ngIf="!removableInput.empty" (click)="removableInput.clear($event)">
+            <mat-icon matSuffix>folder</mat-icon>
+            <mat-icon>clear</mat-icon>
+          </button>
+
+        </mat-form-field>
+        <br />
+        <mat-form-field style="text-align: left;">
+          <ngx-mat-file-input #removableInput formControlName="acceptfile" placeholder="Mp3 file only" [accept]="'.mp3'" (change)="onChange1($event)"></ngx-mat-file-input>
+          <button mat-icon-button matSuffix *ngIf="!removableInput.empty" (click)="removableInput.clear($event)">
+            <mat-icon matSuffix>folder</mat-icon>
+            <mat-icon>clear</mat-icon>
+          </button>
+        </mat-form-field>
+       </mat-card-content>
+  <mat-card-actions>
+
+      <button mat-raised-button color="primary" type="submit">CREATE</button>
+
+    <!-- <input class="ng-hide" id="input-file-id" multiple type="file" (change)="uploadSong($event)"/>
+    <label for="input-file-id" class="md-button md-raised md-primary"></label> -->
+
+   <!--  <input class="ng-hide" id="input-file-id"  type="file" (change)="upload($event)"/> -->
+
+  </mat-card-actions>
+</form>
+</mat-tab>
+
+
+</mat-tab-group>
 
 </mat-card>
-
-
-

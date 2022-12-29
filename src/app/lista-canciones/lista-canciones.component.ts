@@ -3,7 +3,7 @@ import { Song } from '../song';
 import { Songs } from '../mock-songs';
 import { FilterPipe } from '../pipes/filter.pipe';
 import {PageEvent} from '@angular/material/paginator';
-import { SongService } from '../services/song.service';
+import { SongsService } from '../services/songs.service';
 
 @Component({
   selector: 'app-lista-canciones',
@@ -31,11 +31,14 @@ export class ListaCancionesComponent implements OnInit {
   @Output() songEvent = new EventEmitter<Song>();
 
  
-  constructor(private songService: SongService) { }
+  constructor(private songsService: SongsService) { }
 
   ngOnInit(): void {
-    this.songList = this.songService.getSongs(this.pageSize, this.pageIndex*this.pageSize);
-    this.length = this.songService.getLength();
+   /*  this.songList = this.songService.getSongs(this.pageSize, this.pageIndex*this.pageSize);
+    this.length = this.songService.getLength(); */
+    this.songsService.getSongs().subscribe(songs => {
+      this.songList = songs;
+    })
   }
 
   onSelect(song: Song): void {
@@ -69,6 +72,6 @@ export class ListaCancionesComponent implements OnInit {
     this.pageSize = e.pageSize;
     this.pageIndex = e.pageIndex;
 
-    this.songList = this.songService.getSongs(this.pageSize, this.pageIndex*this.pageSize);
+    /* this.songList = this.songService.getSongs(this.pageSize, this.pageIndex*this.pageSize); */
   }
 }
