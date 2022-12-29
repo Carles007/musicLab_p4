@@ -39,6 +39,7 @@ export class SongsService {
    { merge: true });
   }
 
+  
   updateImage($event: any, song: Song){
 
     const songRefUpadated = doc(this.firestore,'canciones',`${song.id}`);
