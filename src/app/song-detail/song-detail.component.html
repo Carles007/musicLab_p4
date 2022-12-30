@@ -2,11 +2,10 @@
   <mat-tab-group>
     <mat-tab label="Current Song">
   <mat-card-header>
-    <img src="{{song.imagen}}"  mat-card-avatar />
-    <mat-card-title>Name: {{song.name}}</mat-card-title>
-    <mat-card-subtitle>Artist: {{song.artist}}</mat-card-subtitle>
+    <mat-card-title>{{song.name}}</mat-card-title>
+    <mat-card-subtitle>{{song.artist}}</mat-card-subtitle>
   </mat-card-header>
-  <img img mat-card-md-image src="{{song.imagen}}" alt="Photo of the song album">
+  <img mat-card-md-image src="{{song.imagen}}" alt="Photo of the song album">
   <form [formGroup]="formulario" (ngSubmit)="onSubmitSave()">
   <mat-card-content>
 
@@ -75,6 +74,8 @@
   <mat-card-actions>
 
       <button mat-raised-button color="primary" type="submit">SAVE</button>
+      <button mat-raised-button color="warn" type="button" (click)="deleteSong(song)">DELETE</button>
+
 
     <!-- <input class="ng-hide" id="input-file-id" multiple type="file" (change)="uploadSong($event)"/>
     <label for="input-file-id" class="md-button md-raised md-primary"></label> -->

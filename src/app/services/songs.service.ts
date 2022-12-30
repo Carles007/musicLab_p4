@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, addDoc, collectionData, setDoc, doc } from '@angular/fire/firestore';
+import { Firestore, addDoc, collectionData, setDoc, doc, deleteDoc } from '@angular/fire/firestore';
 import { collection } from '@firebase/firestore';
 import { Observable } from 'rxjs';
 import { Song } from '../song';
@@ -23,6 +23,12 @@ export class SongsService {
     const songRef = collection(this.firestore,'songs');
     return collectionData(songRef,{idField: 'id'}) as Observable<Song[]>;
 
+  }
+
+  deleteSong(song: Song) {
+    if (!confirm('Are you sure you want to delete this song?')) return;
+    const songRef = doc(this.firestore,'songs',`${song.id}`);
+    return deleteDoc(songRef);
   }
 
   updateSong(song: Song){

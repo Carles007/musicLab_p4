@@ -78,12 +78,14 @@ export class MusicControlComponent implements OnInit {
     );
     audio.loop = false;
   }
+  /*
   deleteSound() {
     if (confirm('Are you sure you want to delete this song?')) {
       this.stopSound();
       this.deleteEvent.emit(this.currentSong);
     }
   }
+  */
   plusSound() {
     if (confirm('Are you sure you want to add a new song?')) {
       this.stopSound();

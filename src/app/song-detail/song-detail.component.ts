@@ -26,7 +26,6 @@ export class SongDetailComponent implements OnInit {
 
   constructor(private songsService: SongsService, private storage: Storage) {
 
-
     this.formulario = new FormGroup({
       name : new FormControl('',[Validators.required]),
       artist : new FormControl('',[Validators.required]),
@@ -94,8 +93,12 @@ export class SongDetailComponent implements OnInit {
 
     this.songsService.uploadSong(this.file1, this.file2, this.formulario.value );
 
-
   }
+
+  deleteSong(song:Song){
+    this.songsService.deleteSong(song);
+  }
+
   ngOnInit(): void {
     this.songsService.getSongs().subscribe(songs => {console.log(songs)})
 
